@@ -109,6 +109,20 @@ float a,b,c,d,f;//中间值
 
 
 
+uint8_t TX_buffer[50];
+
+// 根据你的需求定义最大可发送浮点数个数
+#define VOFA_TX_MAX_FLOATS     (64u)
+
+// JustFloat 协议的帧尾，固定为 0x7F800000 (表示 +Inf)[reference:8]
+static const uint32_t vofa_tail = 0x7F800000u;
+
+// 发送缓冲区：数据区 + 帧尾
+static uint8_t vofa_tx_buf[VOFA_TX_MAX_FLOATS * 4 + 4];
+
+
+
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -199,6 +213,8 @@ int main(void)
 
     three_phase_inverter_interface_main();
     DeBug_interface_main();
+
+    VOFA_SendFloatDMA(&huart4,(float[]){ADC1_value[0],ADC2_value[0]},2);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -276,12 +292,7 @@ float QPR_Compute(QPR *QPR,float e0) {
   QPR->y2=QPR->y1;
   QPR->y1=QPR->y0;
 
-  if (QPR->u0>SVPWM1.vdc) {
-    return SVPWM1.vdc;
-  }
-  if (QPR->u0<-SVPWM1.vdc) {
-    return (-SVPWM1.vdc);
-  }
+
   return QPR->u0;
 }
 
@@ -384,54 +395,60 @@ void vector_actiontime(SVPWM *SVPWM,uint8_t sector) {
 void vector_action(SVPWM *SVPWM,uint8_t sector) {
   switch (sector) {
     case 1:
-      ACMP1_TA.CompareValue=(uint32_t)(SVPWM->T0*0.25f/SVPWM->Ts*SVPWM->arr);
-      ACMP1_TB.CompareValue=(uint32_t)(ACMP1_TA.CompareValue+SVPWM->T1*0.5f/SVPWM->Ts*SVPWM->arr);
-      ACMP1_TC.CompareValue=(uint32_t)(ACMP1_TB.CompareValue+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr);
-      HAL_HRTIM_WaveformCompareConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_A, HRTIM_COMPAREUNIT_1, &ACMP1_TA);
-      HAL_HRTIM_WaveformCompareConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_B, HRTIM_COMPAREUNIT_1, &ACMP1_TB);
-      HAL_HRTIM_WaveformCompareConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_C, HRTIM_COMPAREUNIT_1, &ACMP1_TC);
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR=SVPWM->T0*0.25f/SVPWM->Ts*SVPWM->arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR+SVPWM->T1*0.5f/SVPWM->Ts*SVPWM->arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr;
       break;
     case 2:
-      ACMP1_TB.CompareValue=(uint32_t)(SVPWM->T0*0.25f/SVPWM->Ts*SVPWM->arr);
-      ACMP1_TA.CompareValue=(uint32_t)(ACMP1_TB.CompareValue+SVPWM->T1*0.5f/SVPWM->Ts*SVPWM->arr);
-      ACMP1_TC.CompareValue=(uint32_t)(ACMP1_TA.CompareValue+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr);
-      HAL_HRTIM_WaveformCompareConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_A, HRTIM_COMPAREUNIT_1, &ACMP1_TA);
-      HAL_HRTIM_WaveformCompareConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_B, HRTIM_COMPAREUNIT_1, &ACMP1_TB);
-      HAL_HRTIM_WaveformCompareConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_C, HRTIM_COMPAREUNIT_1, &ACMP1_TC);
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR=SVPWM->T0*0.25f/SVPWM->Ts*SVPWM->arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR+SVPWM->T1*0.5f/SVPWM->Ts*SVPWM->arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr;
       break;
     case 3:
-      ACMP1_TB.CompareValue=(uint32_t)(SVPWM->T0*0.25f/SVPWM->Ts*SVPWM->arr);
-      ACMP1_TC.CompareValue=(uint32_t)(ACMP1_TB.CompareValue+SVPWM->T1*0.5f/SVPWM->Ts*SVPWM->arr);
-      ACMP1_TA.CompareValue=(uint32_t)(ACMP1_TC.CompareValue+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr);
-      HAL_HRTIM_WaveformCompareConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_A, HRTIM_COMPAREUNIT_1, &ACMP1_TA);
-      HAL_HRTIM_WaveformCompareConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_B, HRTIM_COMPAREUNIT_1, &ACMP1_TB);
-      HAL_HRTIM_WaveformCompareConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_C, HRTIM_COMPAREUNIT_1, &ACMP1_TC);
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR=SVPWM->T0*0.25f/SVPWM->Ts*SVPWM->arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR+SVPWM->T1*0.5f/SVPWM->Ts*SVPWM->arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr;
       break;
     case 4:
-      ACMP1_TC.CompareValue=(uint32_t)(SVPWM->T0*0.25f/SVPWM->Ts*SVPWM->arr);
-      ACMP1_TB.CompareValue=(uint32_t)(ACMP1_TC.CompareValue+SVPWM->T1*0.5f/SVPWM->Ts*SVPWM->arr);
-      ACMP1_TA.CompareValue=(uint32_t)(ACMP1_TB.CompareValue+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr);
-      HAL_HRTIM_WaveformCompareConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_A, HRTIM_COMPAREUNIT_1, &ACMP1_TA);
-      HAL_HRTIM_WaveformCompareConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_B, HRTIM_COMPAREUNIT_1, &ACMP1_TB);
-      HAL_HRTIM_WaveformCompareConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_C, HRTIM_COMPAREUNIT_1, &ACMP1_TC);
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR=SVPWM->T0*0.25f/SVPWM->Ts*SVPWM->arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR+SVPWM->T1*0.5f/SVPWM->Ts*SVPWM->arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr;
       break;
     case 5:
-      ACMP1_TC.CompareValue=(uint32_t)(SVPWM->T0*0.25f/SVPWM->Ts*SVPWM->arr);
-      ACMP1_TA.CompareValue=(uint32_t)(ACMP1_TC.CompareValue+SVPWM->T1*0.5f/SVPWM->Ts*SVPWM->arr);
-      ACMP1_TB.CompareValue=(uint32_t)(ACMP1_TA.CompareValue+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr);
-      HAL_HRTIM_WaveformCompareConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_A, HRTIM_COMPAREUNIT_1, &ACMP1_TA);
-      HAL_HRTIM_WaveformCompareConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_B, HRTIM_COMPAREUNIT_1, &ACMP1_TB);
-      HAL_HRTIM_WaveformCompareConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_C, HRTIM_COMPAREUNIT_1, &ACMP1_TC);
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR=SVPWM->T0*0.25f/SVPWM->Ts*SVPWM->arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR+SVPWM->T1*0.5f/SVPWM->Ts*SVPWM->arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr;
       break;
     case 6:
-      ACMP1_TA.CompareValue=(uint32_t)(SVPWM->T0*0.25f/SVPWM->Ts*SVPWM->arr);
-      ACMP1_TC.CompareValue=(uint32_t)(ACMP1_TA.CompareValue+SVPWM->T1*0.5f/SVPWM->Ts*SVPWM->arr);
-      ACMP1_TB.CompareValue=(uint32_t)(ACMP1_TC.CompareValue+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr);
-      HAL_HRTIM_WaveformCompareConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_A, HRTIM_COMPAREUNIT_1, &ACMP1_TA);
-      HAL_HRTIM_WaveformCompareConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_B, HRTIM_COMPAREUNIT_1, &ACMP1_TB);
-      HAL_HRTIM_WaveformCompareConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_C, HRTIM_COMPAREUNIT_1, &ACMP1_TC);
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR=SVPWM->T0*0.25f/SVPWM->Ts*SVPWM->arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR+SVPWM->T1*0.5f/SVPWM->Ts*SVPWM->arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr;
       break;
   }
+}
+void VOFA_SendFloatDMA(UART_HandleTypeDef *huart, float *data, uint16_t num)
+{
+  // 1. 安全检查：如果上一次 DMA 传输还没完成，直接返回，避免冲突
+  if (huart->gState != HAL_UART_STATE_READY) {
+    return;
+  }
+
+  // 2. 防止数据溢出
+  if (num > VOFA_TX_MAX_FLOATS) {
+    num = VOFA_TX_MAX_FLOATS;
+  }
+
+  // 3. 计算数据部分的字节数
+  uint16_t bytes_data = num * sizeof(float); // sizeof(float) 通常为 4
+
+  // 4. 将浮点数据拷贝到发送缓冲区
+  memcpy(vofa_tx_buf, data, bytes_data);
+
+  // 5. 在数据后面追加 4 字节的帧尾
+  memcpy(vofa_tx_buf + bytes_data, &vofa_tail, sizeof(vofa_tail));
+
+  // 6. 启动 DMA 发送：发送 (数据 + 帧尾)
+  HAL_UART_Transmit_DMA(huart, vofa_tx_buf, bytes_data + sizeof(vofa_tail));
 }
 void HAL_HRTIM_RegistersUpdateCallback(HRTIM_HandleTypeDef *hhrtim,uint32_t TimerIdx) {
   static uint8_t count = 0;
@@ -454,6 +471,7 @@ void HAL_HRTIM_RegistersUpdateCallback(HRTIM_HandleTypeDef *hhrtim,uint32_t Time
       cos_b_q31=cos_a_q31-0x55555555;
       vb_setpoint=S.vm*sin_cos_q31_to_float(cos_b_q31);
       phy_conv_calc();
+
       calc_ia_setpoint=QPR_Compute(&QPR1,calc_va_setpoint-ADC2_value[0]);
       calc_ib_setpoint=QPR_Compute(&QPR2,calc_vb_setpoint-ADC2_value[1]);
       va_control=P_Compute(p1,calc_ia_setpoint-ADC1_value[0]);
@@ -518,6 +536,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
             hzc-=0.5f;
             QPR1.wc=hzc*2.0f*PI;
             QPR2.wc=hzc*2.0f*PI;
+            break;
           case kp1_:
             QPR1.kp-=0.1f;
             break;

@@ -110,6 +110,7 @@ void Error_Handler(void);
   void SV_init(SV *S,float w0,float t0,float vm);
   void QPR_Init(QPR *QPR,float wc,float t,float w0,float kp,float kr);
   void SVPWM_init(SVPWM *SVPWM,float vdc,float Ts,float arr);
+  void VOFA_SendFloatDMA(UART_HandleTypeDef *huart, float *data, uint16_t num);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

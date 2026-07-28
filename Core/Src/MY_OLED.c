@@ -59,6 +59,10 @@ void DeBug_interface_main(void) {
             OLED_ClearArea(54,56,72,8);
             OLED_ShowString(54,56,"vm_",OLED_6X8);
             break;
+        case hzc_:
+            OLED_ClearArea(54,56,72,8);
+            OLED_ShowString(54,56,"hzc_",OLED_6X8);
+            break;
         case kp1_:
             OLED_ClearArea(54,56,72,8);
             OLED_ShowString(54,56,"kp1_",OLED_6X8);
