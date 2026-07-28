@@ -51,10 +51,41 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-const float phy_calc_conv_voltage=0;
-const float phy_calc_conv_current=0;
+const float phy_calc_conv_voltage_0001=0.300f;
+const float phy_calc_conv_current_0001=0.01015f;
+const float phy_calc_conv_voltage_0002=0.3035f;
+const float phy_calc_conv_current_0002=0.0101f;
+const float phy_calc_conv_voltage_0003=0.290f;
+const float phy_calc_conv_current_0003=0.01020f;
+const float phy_calc_conv_voltage_0004=0.297f;
+const float phy_calc_conv_current_0004=0.01010f;
+const float phy_calc_conv_voltage_0005=0.3035f;
+const float phy_calc_conv_current_0005=0.0100f;
+const float calc_phy_conv_voltage_0001=3.3333333333f;
+const float calc_phy_conv_current_0001=98.5221674877f;
+const float calc_phy_conv_voltage_offset_0001=6816.6666666667f;
+const float calc_phy_conv_current_offset_0001=201477.83251231f;
+const float calc_phy_conv_voltage_0002=3.2948929160f;
+const float calc_phy_conv_current_0002=99.0099009901f;
+const float calc_phy_conv_voltage_offset_0002=6738.0560131795f;
+const float calc_phy_conv_current_offset_0002=202475.2475247500f;
+const float calc_phy_conv_voltage_0003=3.4482758621f;
+const float calc_phy_conv_current_0003=98.0392156863f;
+const float calc_phy_conv_voltage_offset_0003=7051.7241379310f;
+const float calc_phy_conv_current_offset_0003=200490.19607843f;
+const float calc_phy_conv_voltage_0004=3.3670033670f;
+const float calc_phy_conv_current_0004=99.0099009901f;
+const float calc_phy_conv_voltage_offset_0004=6885.5218855218f;
+const float calc_phy_conv_current_offset_0004=202475.24752475f;
+const float calc_phy_conv_voltage_0005=3.2948929160f;
+const float calc_phy_conv_current_0005=100.0f;
+const float calc_phy_conv_voltage_offset_0005=6738.0560131795f;
+const float calc_phy_conv_current_offset_0005=204500.0f;
+
 const float phy_calc_conv_offset=2045;
-const float p1=5.0,p2=5.0;
+
+float p1=5.0,p2=5.0;
+float hzc=30.0f;
 
 enum EC_DeBug now_EC_DeBug=vm_;
 
@@ -159,7 +190,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
+    va_measurement=ADC2_value[0]*calc_phy_conv_voltage_0001-calc_phy_conv_voltage_offset_0001;
+    vb_measurement=ADC2_value[1]*calc_phy_conv_voltage_0002-calc_phy_conv_voltage_offset_0002;
+    vc_measurement=ADC2_value[2]*calc_phy_conv_voltage_0003-calc_phy_conv_voltage_offset_0003;
+    ia_measurement=ADC1_value[0]*calc_phy_conv_current_0001-calc_phy_conv_current_offset_0001;
+    ib_measurement=ADC1_value[1]*calc_phy_conv_current_0002-calc_phy_conv_current_offset_0002;
+    ic_measurement=ADC1_value[2]*calc_phy_conv_current_0003-calc_phy_conv_current_offset_0003;
 
     three_phase_inverter_interface_main();
     DeBug_interface_main();
@@ -240,10 +276,16 @@ float QPR_Compute(QPR *QPR,float e0) {
   QPR->y2=QPR->y1;
   QPR->y1=QPR->y0;
 
-  return QPR->u0;//需要加上输出限幅;
+  if (QPR->u0>SVPWM1.vdc) {
+    return SVPWM1.vdc;
+  }
+  if (QPR->u0<-SVPWM1.vdc) {
+    return (-SVPWM1.vdc);
+  }
+  return QPR->u0;
 }
 
-float P_Compute(const float p,float e0) {
+float P_Compute(float p,float e0) {
   return (p*e0);
 }
 
@@ -263,8 +305,8 @@ float sin_cos_q31_to_float(int32_t sin_cos_q31_value) {
   return (float)sin_cos_q31_value / 2147483648.0f;
 }
 void phy_conv_calc(void) {
-  calc_va_setpoint=va_setpoint*phy_calc_conv_voltage+phy_calc_conv_offset;
-  calc_vb_setpoint=vb_setpoint*phy_calc_conv_voltage+phy_calc_conv_offset;
+  calc_va_setpoint=va_setpoint*phy_calc_conv_voltage_0001+phy_calc_conv_offset;
+  calc_vb_setpoint=vb_setpoint*phy_calc_conv_voltage_0002+phy_calc_conv_offset;
 }
 void SVPWM_init(SVPWM *SVPWM,float vdc,float Ts,float arr) {
   SVPWM->vdc=vdc;
@@ -426,7 +468,7 @@ void HAL_HRTIM_RegistersUpdateCallback(HRTIM_HandleTypeDef *hhrtim,uint32_t Time
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
   if (GPIO_Pin==EC11D_Pin)
   {
-    now_EC_DeBug=(now_EC_DeBug+1)%5;
+    now_EC_DeBug=(now_EC_DeBug+1)%8;
   }
   if (GPIO_Pin==EC11A_Pin)
   {
@@ -435,6 +477,11 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
         switch (now_EC_DeBug) {
           case vm_:
             S.vm+=0.2f;
+            break;
+          case hzc_:
+            hzc+=0.5f;
+            QPR1.wc=hzc*2.0f*PI;
+            QPR2.wc=hzc*2.0f*PI;
             break;
           case kp1_:
             QPR1.kp+=0.1f;
@@ -447,6 +494,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
             break;
           case kr2_:
             QPR2.kr+=0.1f;
+            break;
+          case p1_:
+            p1+=0.5f;
+            break;
+          case p2_:
+            p2+=0.5f;
             break;
           default:
             break;
@@ -461,6 +514,10 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
           case vm_:
             S.vm-=0.2f;
             break;
+          case hzc_:
+            hzc-=0.5f;
+            QPR1.wc=hzc*2.0f*PI;
+            QPR2.wc=hzc*2.0f*PI;
           case kp1_:
             QPR1.kp-=0.1f;
             break;
@@ -472,6 +529,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
             break;
           case kr2_:
             QPR2.kr-=0.1f;
+            break;
+          case p1_:
+            p1-=0.5f;
+            break;
+          case p2_:
+            p2-=0.5f;
             break;
           default:
             break;

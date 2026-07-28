@@ -85,10 +85,13 @@ extern "C" {
   }SVPWM;
   enum EC_DeBug{
     vm_=0,
-    kp1_=1,
-    kr1_=2,
-    kp2_=3,
-    kr2_=4,
+    hzc_=1,
+    kp1_=2,
+    kr1_=3,
+    kp2_=4,
+    kr2_=5,
+    p1_=6,
+    p2_=7,
   };
 
   extern SV S;
@@ -96,6 +99,8 @@ extern "C" {
   extern QPR QPR2;
   extern enum EC_DeBug now_EC_DeBug;
   extern float va_measurement,vb_measurement,vc_measurement,ia_measurement,ib_measurement,ic_measurement;
+  extern float p1,p2;
+  extern float hzc;
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
