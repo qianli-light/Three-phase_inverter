@@ -71,6 +71,7 @@ int32_t sin_q31,cos_a_q31,theta_q31=0,cos_b_q31;
 
 float va_setpoint,vb_setpoint,ia_setpoint,ib_setpoint;
 float calc_va_setpoint,calc_vb_setpoint,calc_ia_setpoint,calc_ib_setpoint;
+float va_measurement,vb_measurement,vc_measurement,ia_measurement,ib_measurement,ic_measurement;
 float va_control,vb_control;
 float a,b,c,d,f;//中间值
 
@@ -138,6 +139,8 @@ int main(void)
   HAL_ADCEx_Calibration_Start(&hadc2,ADC_DIFFERENTIAL_ENDED);
   HAL_ADC_Start_DMA(&hadc2,(uint32_t*)ADC2_value,sizeof(ADC2_value)/sizeof(uint16_t));
 
+  three_phase_inverter_interface_head();
+
   HAL_HRTIM_WaveformCountStart(&hhrtim1, HRTIM_TIMERID_TIMER_A);
   HAL_HRTIM_WaveformCountStart(&hhrtim1, HRTIM_TIMERID_TIMER_B);
   HAL_HRTIM_WaveformCountStart(&hhrtim1, HRTIM_TIMERID_TIMER_C);
@@ -148,12 +151,18 @@ int main(void)
 
   __HAL_HRTIM_TIMER_ENABLE_IT(&hhrtim1,HRTIM_TIMERINDEX_TIMER_A,HRTIM_TIM_IT_UPD);//开启更新中断,开启QPR
 
+  DeBug_interface_head();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
+
+    three_phase_inverter_interface_main();
+    DeBug_interface_main();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

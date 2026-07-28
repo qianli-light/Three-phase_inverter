@@ -90,6 +90,12 @@ extern "C" {
     kp2_=3,
     kr2_=4,
   };
+
+  extern SV S;
+  extern QPR QPR1;
+  extern QPR QPR2;
+  extern enum EC_DeBug now_EC_DeBug;
+  extern float va_measurement,vb_measurement,vc_measurement,ia_measurement,ib_measurement,ic_measurement;
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
