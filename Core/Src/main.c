@@ -86,12 +86,9 @@ SV S={0};
 QPR QPR1={0},QPR2={0};
 SVPWM SVPWM1={0};
 
-HRTIM_CompareCfgTypeDef ACMP1_TA={0},ACMP1_TB={0},ACMP1_TC={0};
-
 uint16_t ADC1_value[3],ADC2_value[4];
 
 CORDIC_ConfigTypeDef sConfig;
-int32_t sin_q31,cos_a_q31,theta_q31=0,cos_b_q31;
 
 float va_setpoint,vb_setpoint,ia_setpoint,ib_setpoint;
 float calc_va_setpoint,calc_vb_setpoint,calc_ia_setpoint,calc_ib_setpoint;
@@ -176,8 +173,8 @@ int main(void)
 
   OLED_Init();
   SV_init(&S,1.0f);
-  QPR_Init(&QPR1,2*PI*5,0.3f,20.0f);
-  QPR_Init(&QPR2,2*PI*5,0.3f,20.0f);
+  QPR_Init(&QPR1,2*PI*hzc,0.3f,20.0f);
+  QPR_Init(&QPR2,2*PI*hzc,0.3f,20.0f);
   SVPWM_init(&SVPWM1,30.0f);
 
   HAL_ADCEx_Calibration_Start(&hadc1,ADC_DIFFERENTIAL_ENDED);
@@ -195,12 +192,14 @@ int main(void)
   HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TB1|HRTIM_OUTPUT_TB2);//开启通道输出
   HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TC1|HRTIM_OUTPUT_TC2);//开启通道输出
 
+  get_va_setpoint_data(va_setpoint_data,200);
+  get_vb_setpoint_data(vb_setpoint_data,200);
+
   __HAL_HRTIM_TIMER_ENABLE_IT(&hhrtim1,HRTIM_TIMERINDEX_TIMER_A,HRTIM_TIM_IT_UPD);//开启更新中断,开启QPR
 
   DeBug_interface_head();
 
-  get_va_setpoint_data(va_setpoint_data,200);
-  get_vb_setpoint_data(vb_setpoint_data,200);
+
 
   __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_4,0);
   /* USER CODE END 2 */
@@ -277,16 +276,21 @@ inline void QPR_Init(QPR *QPR,float wc,float kp,float kr) {
   QPR->kr=kr;
   QPR->k=2.0f/QPR->t;
 
+  QPR->w0 = QPR->k * tanf(QPR->w0 * QPR->t / 2.0f);   // 用畸变后的值参与系数计算
+  QPR->wc = QPR->k * tanf(QPR->wc * QPR->t / 2.0f);
+
   float A0=QPR->k*QPR->k+2.0f*QPR->wc*QPR->k+QPR->w0*QPR->w0;
   QPR->a1=2.0f*(QPR->w0*QPR->w0-QPR->k*QPR->k)/A0;
   QPR->a2=(QPR->k*QPR->k-2.0f*QPR->wc*QPR->k+QPR->w0*QPR->w0)/A0;
   QPR->b0=2.0f*QPR->k*QPR->wc/A0;
   QPR->b2=-QPR->b0;
 
-  float k = 2.0f / QPR->t;
-  QPR->w0 = k * tanf(QPR->w0 * QPR->t / 2.0f);   // 用畸变后的值参与系数计算
-  QPR->wc = k * tanf(wc * QPR->t / 2.0f);
-  QPR->k = k;
+  QPR->e1=0;
+  QPR->e2=0;
+  QPR->y0=0;
+  QPR->y1=0;
+  QPR->y2=0;
+  QPR->u0=0;
 }
 
 float QPR_Compute(QPR *QPR,float e0) {
@@ -518,7 +522,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
       if (HAL_GPIO_ReadPin(EC11B_GPIO_Port,EC11B_Pin)==0) {
         switch (now_EC_DeBug) {
           case vm_:
-            S.vm+=0.2f;
+            S.vm+=0.5f;
             break;
           case hzc_:
             hzc+=0.5f;
@@ -526,16 +530,16 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
             QPR2.wc=hzc*2.0f*PI;
             break;
           case kp1_:
-            QPR1.kp+=0.1f;
+            QPR1.kp+=0.2f;
             break;
           case kr1_:
-            QPR1.kr+=0.1f;
+            QPR1.kr+=0.5f;
             break;
           case kp2_:
-            QPR2.kp+=0.1f;
+            QPR2.kp+=0.2f;
             break;
           case kr2_:
-            QPR2.kr+=0.1f;
+            QPR2.kr+=0.5f;
             break;
           case p1_:
             p1+=0.5f;
@@ -554,7 +558,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
       if (HAL_GPIO_ReadPin(EC11A_GPIO_Port,EC11A_Pin)==0) {
         switch (now_EC_DeBug) {
           case vm_:
-            S.vm-=0.2f;
+            S.vm-=0.5f;
             break;
           case hzc_:
             hzc-=0.5f;
@@ -562,16 +566,16 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
             QPR2.wc=hzc*2.0f*PI;
             break;
           case kp1_:
-            QPR1.kp-=0.1f;
+            QPR1.kp-=0.2f;
             break;
           case kr1_:
-            QPR1.kr-=0.1f;
+            QPR1.kr-=0.5f;
             break;
           case kp2_:
-            QPR2.kp-=0.1f;
+            QPR2.kp-=0.2f;
             break;
           case kr2_:
-            QPR2.kr-=0.1f;
+            QPR2.kr-=0.5f;
             break;
           case p1_:
             p1-=0.5f;
@@ -589,8 +593,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
       frequency*=0.5f;
       S.t0=0.005/frequency;
       S.w0=2.0*PI*frequency;
-      QPR_Init(&QPR1,2*PI*5,0.3f,20.0f);
-      QPR_Init(&QPR2,2*PI*5,0.3f,20.0f);
+      QPR_Init(&QPR1,2*PI*hzc,0.3f,20.0f);
+      QPR_Init(&QPR2,2*PI*hzc,0.3f,20.0f);
       SVPWM_init(&SVPWM1,30.0f);
       frequency_conv(frequency);
   }

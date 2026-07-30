@@ -51,3 +51,5 @@
 18	487	8070360138766460	CMakeFiles/Three-phase_inverter.dir/Core/Src/tim.c.obj	57c76a9fe1dec5b5
 5	579	8070360139723231	CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj	beac0ad9f47db31e
 579	1076	8070360144638171	Three-phase_inverter.elf	2a55b5f923fd5823
+22	1103	8070748413317679	CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj	beac0ad9f47db31e
+1105	2164	8070748423963769	Three-phase_inverter.elf	2a55b5f923fd5823
