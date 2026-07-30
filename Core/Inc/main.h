@@ -73,6 +73,9 @@ extern "C" {
     float y2;
 
     float u0;
+    float u1;
+    float q0;
+    float q1;
   }QPR;
   typedef struct SVPWM {
     float vdc;
@@ -82,6 +85,8 @@ extern "C" {
     float T2;
     float arr;
     float mid;
+    float A_Phase,B_Phase,C_Phase;
+    float Vta,Vtb,Vtc;
   }SVPWM;
   enum EC_DeBug{
     vm_=0,
@@ -116,6 +121,8 @@ void Error_Handler(void);
   void get_va_setpoint_data(float data[],int num);
   void get_vb_setpoint_data(float data[],int num);
   void frequency_conv(float frequency);
+  void harmonic_insert(SVPWM *svpwm);
+  void QPR_QSG_Compute(QPR *QPR,float e0);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

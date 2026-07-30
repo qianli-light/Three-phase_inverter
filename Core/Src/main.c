@@ -76,7 +76,6 @@ const float calc_phy_conv_current_offset_0005=20.45f;
 
 const float phy_calc_conv_offset=2045;
 
-float p1=0.5,p2=0.5;
 float hzc=5.0f;
 float frequency=50.0f;
 
@@ -85,6 +84,7 @@ enum EC_DeBug now_EC_DeBug=vm_;
 SV S={0};
 QPR QPR1={0},QPR2={0};
 SVPWM SVPWM1={0};
+float p1,p2;
 
 uint16_t ADC1_value[3],ADC2_value[4];
 
@@ -97,6 +97,7 @@ float va_control,vb_control;
 float a,b,c,d,f;//中间值
 float va_setpoint_data[200];
 float vb_setpoint_data[200];
+float gain;
 
 
 
@@ -305,7 +306,18 @@ float QPR_Compute(QPR *QPR,float e0) {
 
   return QPR->u0;
 }
+void QPR_QSG_Compute(QPR *QPR,float e0) {
+  QPR->y0=QPR->b0*e0+QPR->b2*QPR->e2-QPR->a1*QPR->y1-QPR->a2*QPR->y2;
+  QPR->u0=QPR->kp*e0+QPR->kr*QPR->y0;
+  QPR->q0=QPR->q1+(QPR->u0+QPR->u1)*0.5f*QPR->w0*QPR->t;
 
+  QPR->e2=QPR->e1;
+  QPR->e1=e0;
+  QPR->y2=QPR->y1;
+  QPR->y1=QPR->y0;
+  QPR->u1=QPR->u0;
+  QPR->q1=QPR->q0;
+}
 float P_Compute(float p,float e0) {
   return (p*e0);
 }
@@ -346,6 +358,20 @@ void Midvalue_Compute(float va_control,float vb_control) {
   b=va_control-vb_control;
   c=2.0f*va_control+vb_control;
   d=-va_control+vb_control;
+}
+void harmonic_insert(SVPWM *svpwm) {
+  float min1,min2,max1,max2,sum;
+  a = (svpwm->A_Phase + 1.0f) * 0.5f;
+  b = (svpwm->B_Phase + 1.0f) * 0.5f;
+  c = (svpwm->C_Phase + 1.0f) * 0.5f;
+  max1 =  fmaxf(a,b);
+  max2 =  fmaxf(max1,c);
+  min1 =  fminf(a,b);
+  min2 =  fminf(min1,c);
+  sum  = (1.0f - max2 - min2) * 0.5f;
+  svpwm->Vta = sum + a;
+  svpwm->Vtb = sum + b;
+  svpwm->Vtc = sum + c;
 }
 uint8_t Sector_Judgment(void) {
   uint8_t N=0;
@@ -476,7 +502,6 @@ void get_vb_setpoint_data(float data[],int num) {
 }
 void HAL_HRTIM_RegistersUpdateCallback(HRTIM_HandleTypeDef *hhrtim,uint32_t TimerIdx) {
   static uint8_t count = 0;
-  static uint8_t sector = 0;
   static uint8_t count1 = 0;
   if (TimerIdx==HRTIM_TIMERINDEX_TIMER_A) {
     count++;
@@ -489,25 +514,21 @@ void HAL_HRTIM_RegistersUpdateCallback(HRTIM_HandleTypeDef *hhrtim,uint32_t Time
       }
 
       calc_conv_phy();
+      QPR_QSG_Compute(&QPR1,va_setpoint-va_measurement);
+      QPR_QSG_Compute(&QPR2,vb_setpoint-vb_measurement);
+      SVPWM1.A_Phase=QPR1.u0/sqrtf(QPR1.u0*QPR1.u0+QPR1.q0*QPR1.q0);
+      SVPWM1.B_Phase=QPR2.u0/sqrtf(QPR2.u0*QPR2.u0+QPR2.q0*QPR2.q0);
+      SVPWM1.C_Phase=-(SVPWM1.A_Phase+SVPWM1.B_Phase);
 
-      //VOFA_SendFloatDMA(&huart4,(float[]){va_setpoint,vb_setpoint},2);
+      harmonic_insert(&SVPWM1);
 
-      ia_setpoint=QPR_Compute(&QPR1,va_setpoint-va_measurement);
-      ib_setpoint=QPR_Compute(&QPR2,vb_setpoint-vb_measurement);
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR=SVPWM1.Vta*SVPWM1.arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR=SVPWM1.Vtb*SVPWM1.arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR=SVPWM1.Vtc*SVPWM1.arr;
 
-      //VOFA_SendFloatDMA(&huart4,(float[]){ia_setpoint,ib_setpoint},2);
+      VOFA_SendFloatDMA(&huart4,(float[]){SVPWM1.Vta,SVPWM1.Vtb,SVPWM1.Vtc},3);
 
-      va_control=p1*(ia_setpoint-ia_measurement);
-      vb_control=p2*(ib_setpoint-ib_measurement);
 
-      //VOFA_SendFloatDMA(&huart4,(float[]){va_control,vb_control},2);
-
-      Midvalue_Compute(va_control,vb_control);
-      sector=Sector_Judgment();
-      vector_actiontime(&SVPWM1,sector);
-      vector_action(&SVPWM1,sector);
-
-      VOFA_SendFloatDMA(&huart4,(float[]){HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR,HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR,HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR},3);
     }
   }
 }
@@ -525,6 +546,11 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
             S.vm+=0.5f;
             get_va_setpoint_data(va_setpoint_data,200);
             get_vb_setpoint_data(vb_setpoint_data,200);
+            gain=1.0f/S.vm;
+            QPR1.kp=0.1f*gain;
+            QPR1.kr=gain-QPR1.kp;
+            QPR2.kp=QPR1.kp;
+            QPR2.kr=QPR1.kr;
             break;
           case hzc_:
             hzc+=0.5f;
@@ -569,6 +595,10 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
             S.vm-=0.5f;
             get_va_setpoint_data(va_setpoint_data,200);
             get_vb_setpoint_data(vb_setpoint_data,200);
+            QPR1.kp=0.1f*gain;
+            QPR1.kr=gain-QPR1.kp;
+            QPR2.kp=QPR1.kp;
+            QPR2.kr=QPR1.kr;
             break;
           case hzc_:
             hzc-=0.5f;
