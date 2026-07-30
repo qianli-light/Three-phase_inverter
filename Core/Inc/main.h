@@ -101,16 +101,21 @@ extern "C" {
   extern float va_measurement,vb_measurement,vc_measurement,ia_measurement,ib_measurement,ic_measurement;
   extern float p1,p2;
   extern float hzc;
+  extern float frequency;
+
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-  void SV_init(SV *S,float w0,float t0,float vm);
-  void QPR_Init(QPR *QPR,float wc,float t,float w0,float kp,float kr);
-  void SVPWM_init(SVPWM *SVPWM,float vdc,float Ts,float arr);
+  void SV_init(SV *S,float vm);
+  void QPR_Init(QPR *QPR,float wc,float kp,float kr);
+  void SVPWM_init(SVPWM *SVPWM,float vdc);
   void VOFA_SendFloatDMA(UART_HandleTypeDef *huart, float *data, uint16_t num);
+  void get_va_setpoint_data(float data[],int num);
+  void get_vb_setpoint_data(float data[],int num);
+  void frequency_conv(float frequency);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

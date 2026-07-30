@@ -23,6 +23,7 @@
 #include "dma.h"
 #include "hrtim.h"
 #include "spi.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -51,41 +52,33 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-const float phy_calc_conv_voltage_0001=0.300f;
-const float phy_calc_conv_current_0001=0.01015f;
-const float phy_calc_conv_voltage_0002=0.3035f;
-const float phy_calc_conv_current_0002=0.0101f;
-const float phy_calc_conv_voltage_0003=0.290f;
-const float phy_calc_conv_current_0003=0.01020f;
-const float phy_calc_conv_voltage_0004=0.297f;
-const float phy_calc_conv_current_0004=0.01010f;
-const float phy_calc_conv_voltage_0005=0.3035f;
-const float phy_calc_conv_current_0005=0.0100f;
-const float calc_phy_conv_voltage_0001=3.3333333333f;
-const float calc_phy_conv_current_0001=98.5221674877f;
-const float calc_phy_conv_voltage_offset_0001=6816.6666666667f;
-const float calc_phy_conv_current_offset_0001=201477.83251231f;
-const float calc_phy_conv_voltage_0002=3.2948929160f;
-const float calc_phy_conv_current_0002=99.0099009901f;
-const float calc_phy_conv_voltage_offset_0002=6738.0560131795f;
-const float calc_phy_conv_current_offset_0002=202475.2475247500f;
-const float calc_phy_conv_voltage_0003=3.4482758621f;
-const float calc_phy_conv_current_0003=98.0392156863f;
-const float calc_phy_conv_voltage_offset_0003=7051.7241379310f;
-const float calc_phy_conv_current_offset_0003=200490.19607843f;
-const float calc_phy_conv_voltage_0004=3.3670033670f;
-const float calc_phy_conv_current_0004=99.0099009901f;
-const float calc_phy_conv_voltage_offset_0004=6885.5218855218f;
-const float calc_phy_conv_current_offset_0004=202475.24752475f;
-const float calc_phy_conv_voltage_0005=3.2948929160f;
-const float calc_phy_conv_current_0005=100.0f;
-const float calc_phy_conv_voltage_offset_0005=6738.0560131795f;
-const float calc_phy_conv_current_offset_0005=204500.0f;
+
+const float calc_phy_conv_voltage_0001=0.300f;
+const float calc_phy_conv_current_0001=0.01015f;
+const float calc_phy_conv_voltage_offset_0001=613.5f;
+const float calc_phy_conv_current_offset_0001=20.75675f;
+const float calc_phy_conv_voltage_0002=0.3035f;
+const float calc_phy_conv_current_0002=0.0101f;
+const float calc_phy_conv_voltage_offset_0002=620.6575f;
+const float calc_phy_conv_current_offset_0002=20.6545f;
+const float calc_phy_conv_voltage_0003=0.290f;
+const float calc_phy_conv_current_0003=0.01020f;
+const float calc_phy_conv_voltage_offset_0003=593.05f;
+const float calc_phy_conv_current_offset_0003=20.859f;
+const float calc_phy_conv_voltage_0004=0.297f;
+const float calc_phy_conv_current_0004=0.01010f;
+const float calc_phy_conv_voltage_offset_0004=607.365f;
+const float calc_phy_conv_current_offset_0004=20.6545f;
+const float calc_phy_conv_voltage_0005=0.3035f;
+const float calc_phy_conv_current_0005=0.0100f;
+const float calc_phy_conv_voltage_offset_0005=620.6575f;
+const float calc_phy_conv_current_offset_0005=20.45f;
 
 const float phy_calc_conv_offset=2045;
 
-float p1=5.0,p2=5.0;
-float hzc=30.0f;
+float p1=0.5,p2=0.5;
+float hzc=5.0f;
+float frequency=50.0f;
 
 enum EC_DeBug now_EC_DeBug=vm_;
 
@@ -105,7 +98,8 @@ float calc_va_setpoint,calc_vb_setpoint,calc_ia_setpoint,calc_ib_setpoint;
 float va_measurement,vb_measurement,vc_measurement,ia_measurement,ib_measurement,ic_measurement;
 float va_control,vb_control;
 float a,b,c,d,f;//中间值
-
+float va_setpoint_data[200];
+float vb_setpoint_data[200];
 
 
 
@@ -172,12 +166,19 @@ int main(void)
   MX_ADC2_Init();
   MX_HRTIM1_Init();
   MX_CORDIC_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
+
+  HAL_TIM_Base_Start(&htim3);
+  HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_4);
+  __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_4,2500);
+
+
   OLED_Init();
-  SV_init(&S,2*PI*50,0.0001f,24.0f);
-  QPR_Init(&QPR1,2*PI*30,0.0001f,2*PI*50,0.1f,0.1f);
-  QPR_Init(&QPR2,2*PI*30,0.0001f,2*PI*50,0.1f,0.1f);
-  SVPWM_init(&SVPWM1,30.0f,0.0000125,10000);
+  SV_init(&S,1.0f);
+  QPR_Init(&QPR1,2*PI*5,0.3f,20.0f);
+  QPR_Init(&QPR2,2*PI*5,0.3f,20.0f);
+  SVPWM_init(&SVPWM1,30.0f);
 
   HAL_ADCEx_Calibration_Start(&hadc1,ADC_DIFFERENTIAL_ENDED);
   HAL_ADC_Start_DMA(&hadc1,(uint32_t*)ADC1_value,sizeof(ADC1_value)/sizeof(uint16_t));
@@ -198,23 +199,23 @@ int main(void)
 
   DeBug_interface_head();
 
+  get_va_setpoint_data(va_setpoint_data,200);
+  get_vb_setpoint_data(vb_setpoint_data,200);
+
+  __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_4,0);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    va_measurement=ADC2_value[0]*calc_phy_conv_voltage_0001-calc_phy_conv_voltage_offset_0001;
-    vb_measurement=ADC2_value[1]*calc_phy_conv_voltage_0002-calc_phy_conv_voltage_offset_0002;
     vc_measurement=ADC2_value[2]*calc_phy_conv_voltage_0003-calc_phy_conv_voltage_offset_0003;
-    ia_measurement=ADC1_value[0]*calc_phy_conv_current_0001-calc_phy_conv_current_offset_0001;
-    ib_measurement=ADC1_value[1]*calc_phy_conv_current_0002-calc_phy_conv_current_offset_0002;
     ic_measurement=ADC1_value[2]*calc_phy_conv_current_0003-calc_phy_conv_current_offset_0003;
 
     three_phase_inverter_interface_main();
     DeBug_interface_main();
 
-    VOFA_SendFloatDMA(&huart4,(float[]){ADC1_value[0],ADC2_value[0]},2);
+   // VOFA_SendFloatDMA(&huart4,(float[]){va_setpoint,vb_setpoint},2);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -268,10 +269,10 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void QPR_Init(QPR *QPR,float wc,float t,float w0,float kp,float kr) {
+inline void QPR_Init(QPR *QPR,float wc,float kp,float kr) {
   QPR->wc=wc;
-  QPR->t=t;
-  QPR->w0=w0;
+  QPR->t=0.005f/frequency;
+  QPR->w0=2.0*PI*frequency;
   QPR->kp=kp;
   QPR->kr=kr;
   QPR->k=2.0f/QPR->t;
@@ -281,6 +282,11 @@ void QPR_Init(QPR *QPR,float wc,float t,float w0,float kp,float kr) {
   QPR->a2=(QPR->k*QPR->k-2.0f*QPR->wc*QPR->k+QPR->w0*QPR->w0)/A0;
   QPR->b0=2.0f*QPR->k*QPR->wc/A0;
   QPR->b2=-QPR->b0;
+
+  float k = 2.0f / QPR->t;
+  QPR->w0 = k * tanf(QPR->w0 * QPR->t / 2.0f);   // 用畸变后的值参与系数计算
+  QPR->wc = k * tanf(wc * QPR->t / 2.0f);
+  QPR->k = k;
 }
 
 float QPR_Compute(QPR *QPR,float e0) {
@@ -300,11 +306,11 @@ float P_Compute(float p,float e0) {
   return (p*e0);
 }
 
-void SV_init(SV *S,float w0,float t0,float vm) {
+void SV_init(SV *S,float vm) {
   S->theta=0;
   S->vm=vm;
-  S->t0=t0;
-  S->w0=w0;
+  S->t0=0.005/frequency;
+  S->w0=2.0*PI*frequency;
 }
 int32_t rad_to_q31(float rad) {
   float norm_rad=rad/PI;
@@ -315,14 +321,20 @@ int32_t rad_to_q31(float rad) {
 float sin_cos_q31_to_float(int32_t sin_cos_q31_value) {
   return (float)sin_cos_q31_value / 2147483648.0f;
 }
-void phy_conv_calc(void) {
-  calc_va_setpoint=va_setpoint*phy_calc_conv_voltage_0001+phy_calc_conv_offset;
-  calc_vb_setpoint=vb_setpoint*phy_calc_conv_voltage_0002+phy_calc_conv_offset;
+// void phy_conv_calc(void) {
+//   calc_va_setpoint=va_setpoint*phy_calc_conv_voltage_0001+phy_calc_conv_offset;
+//   calc_vb_setpoint=vb_setpoint*phy_calc_conv_voltage_0002+phy_calc_conv_offset;
+// }
+void calc_conv_phy(void) {
+  va_measurement=ADC2_value[0]*calc_phy_conv_voltage_0001-calc_phy_conv_voltage_offset_0001;
+  vb_measurement=ADC2_value[1]*calc_phy_conv_voltage_0002-calc_phy_conv_voltage_offset_0002;
+  ia_measurement=ADC1_value[0]*calc_phy_conv_current_0001-calc_phy_conv_current_offset_0001;
+  ib_measurement=ADC1_value[1]*calc_phy_conv_current_0002-calc_phy_conv_current_offset_0002;
 }
-void SVPWM_init(SVPWM *SVPWM,float vdc,float Ts,float arr) {
+void SVPWM_init(SVPWM *SVPWM,float vdc) {
   SVPWM->vdc=vdc;
-  SVPWM->Ts=Ts;
-  SVPWM->arr=arr;
+  SVPWM->Ts=0.000625f/frequency;
+  SVPWM->arr=500000.0f/frequency;
   SVPWM->mid=SVPWM->Ts/SVPWM->vdc;
 }
 void Midvalue_Compute(float va_control,float vb_control) {
@@ -332,32 +344,25 @@ void Midvalue_Compute(float va_control,float vb_control) {
   d=-va_control+vb_control;
 }
 uint8_t Sector_Judgment(void) {
-  uint8_t N=0,sector=0;
+  uint8_t N=0;
   if (a>0){N+=1;}
   if (b>0){N+=2;}
   if (c<0){N+=4;}
 
   switch (N) {
     case 3:
-      sector=1;
-      break;
+      return 1;
     case 1:
-      sector=2;
-      break;
+      return 2;
     case 5:
-      sector=3;
-      break;
+      return 3;
     case 4:
-      sector=4;
-      break;
+      return 4;
     case 6:
-      sector=5;
-      break;
+      return 5;
     case 2:
-      sector=6;
-      break;
+      return 6;
   }
-  return sector;
 }
 void vector_actiontime(SVPWM *SVPWM,uint8_t sector) {
   switch (sector) {
@@ -392,37 +397,42 @@ void vector_actiontime(SVPWM *SVPWM,uint8_t sector) {
   }
   SVPWM->T0=SVPWM->Ts-SVPWM->T1-SVPWM->T2;
 }
+void frequency_conv(float frequency) {
+  HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].PERxR = 500000.0f/frequency;
+  HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].PERxR = 500000.0f/frequency;
+  HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].PERxR = 500000.0f/frequency;
+}
 void vector_action(SVPWM *SVPWM,uint8_t sector) {
   switch (sector) {
     case 1:
       HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR=SVPWM->T0*0.25f/SVPWM->Ts*SVPWM->arr;
       HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR+SVPWM->T1*0.5f/SVPWM->Ts*SVPWM->arr;
-      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr+1;
       break;
     case 2:
       HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR=SVPWM->T0*0.25f/SVPWM->Ts*SVPWM->arr;
       HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR+SVPWM->T1*0.5f/SVPWM->Ts*SVPWM->arr;
-      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr+1;
       break;
     case 3:
       HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR=SVPWM->T0*0.25f/SVPWM->Ts*SVPWM->arr;
       HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR+SVPWM->T1*0.5f/SVPWM->Ts*SVPWM->arr;
-      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr+1;
       break;
     case 4:
       HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR=SVPWM->T0*0.25f/SVPWM->Ts*SVPWM->arr;
       HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR+SVPWM->T1*0.5f/SVPWM->Ts*SVPWM->arr;
-      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr+1;
       break;
     case 5:
       HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR=SVPWM->T0*0.25f/SVPWM->Ts*SVPWM->arr;
       HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR+SVPWM->T1*0.5f/SVPWM->Ts*SVPWM->arr;
-      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr+1;
       break;
     case 6:
       HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR=SVPWM->T0*0.25f/SVPWM->Ts*SVPWM->arr;
       HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR+SVPWM->T1*0.5f/SVPWM->Ts*SVPWM->arr;
-      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr;
+      HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR=HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR+SVPWM->T2*0.5f/SVPWM->Ts*SVPWM->arr+1;
       break;
   }
 }
@@ -450,36 +460,50 @@ void VOFA_SendFloatDMA(UART_HandleTypeDef *huart, float *data, uint16_t num)
   // 6. 启动 DMA 发送：发送 (数据 + 帧尾)
   HAL_UART_Transmit_DMA(huart, vofa_tx_buf, bytes_data + sizeof(vofa_tail));
 }
+void get_va_setpoint_data(float data[],int num) {
+  for (int i=0;i<num;i++) {
+    data[i] = S.vm*cos(2*i*PI/num);
+  }
+}
+void get_vb_setpoint_data(float data[],int num) {
+  for (int i=0;i<num;i++) {
+    data[i] =S.vm*cos(2*i*PI/num-2.0/3.0*PI);
+  }
+}
 void HAL_HRTIM_RegistersUpdateCallback(HRTIM_HandleTypeDef *hhrtim,uint32_t TimerIdx) {
   static uint8_t count = 0;
   static uint8_t sector = 0;
+  static uint8_t count1 = 0;
   if (TimerIdx==HRTIM_TIMERINDEX_TIMER_A) {
     count++;
     if (count%8==0) {
-      sConfig.Function=CORDIC_FUNCTION_COSINE;
-      HAL_CORDIC_Configure(&hcordic, &sConfig);
-      CORDIC->WDATA=theta_q31;
-
-      S.theta+=S.w0*S.t0;
-      if (S.theta>2*PI) {
-        S.theta-=2*PI;
+      va_setpoint=va_setpoint_data[count1];
+      vb_setpoint=vb_setpoint_data[count1];
+      count1++;
+      if (count1>=200) {
+        count1=0;
       }
-      theta_q31=rad_to_q31(S.theta);
 
-      cos_a_q31=CORDIC->RDATA;
-      va_setpoint=S.vm*sin_cos_q31_to_float(cos_a_q31);
-      cos_b_q31=cos_a_q31-0x55555555;
-      vb_setpoint=S.vm*sin_cos_q31_to_float(cos_b_q31);
-      phy_conv_calc();
+      calc_conv_phy();
 
-      calc_ia_setpoint=QPR_Compute(&QPR1,calc_va_setpoint-ADC2_value[0]);
-      calc_ib_setpoint=QPR_Compute(&QPR2,calc_vb_setpoint-ADC2_value[1]);
-      va_control=P_Compute(p1,calc_ia_setpoint-ADC1_value[0]);
-      vb_control=P_Compute(p2,calc_ib_setpoint-ADC1_value[1]);
+      //VOFA_SendFloatDMA(&huart4,(float[]){va_setpoint,vb_setpoint},2);
+
+      ia_setpoint=QPR_Compute(&QPR1,va_setpoint-va_measurement);
+      ib_setpoint=QPR_Compute(&QPR2,vb_setpoint-vb_measurement);
+
+      //VOFA_SendFloatDMA(&huart4,(float[]){ia_setpoint,ib_setpoint},2);
+
+      va_control=p1*(ia_setpoint-ia_measurement);
+      vb_control=p2*(ib_setpoint-ib_measurement);
+
+      //VOFA_SendFloatDMA(&huart4,(float[]){va_control,vb_control},2);
+
       Midvalue_Compute(va_control,vb_control);
       sector=Sector_Judgment();
       vector_actiontime(&SVPWM1,sector);
       vector_action(&SVPWM1,sector);
+
+      VOFA_SendFloatDMA(&huart4,(float[]){HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR,HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR,HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR},3);
     }
   }
 }
@@ -560,6 +584,21 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
         }
       }
     }
+  }
+  if (GPIO_Pin==KEY0_Pin) {
+      frequency*=0.5f;
+      S.t0=0.005/frequency;
+      S.w0=2.0*PI*frequency;
+      QPR_Init(&QPR1,2*PI*5,0.3f,20.0f);
+      QPR_Init(&QPR2,2*PI*5,0.3f,20.0f);
+      SVPWM_init(&SVPWM1,30.0f);
+      frequency_conv(frequency);
+  }
+  if (GPIO_Pin==KEY1_Pin) {
+
+  }
+  if (GPIO_Pin==KEY2_Pin) {
+
   }
 }
 /* USER CODE END 4 */

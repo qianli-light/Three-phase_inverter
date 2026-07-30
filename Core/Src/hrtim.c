@@ -51,17 +51,9 @@ void MX_HRTIM1_Init(void)
   {
     Error_Handler();
   }
-  if (HAL_HRTIM_DLLCalibrationStart(&hhrtim1, HRTIM_CALIBRATIONRATE_3) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_HRTIM_PollForDLLCalibration(&hhrtim1, 10) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  pTimeBaseCfg.Period = 10000;
+  pTimeBaseCfg.Period = 625;
   pTimeBaseCfg.RepetitionCounter = 0x00;
-  pTimeBaseCfg.PrescalerRatio = HRTIM_PRESCALERRATIO_MUL16;
+  pTimeBaseCfg.PrescalerRatio = HRTIM_PRESCALERRATIO_DIV1;
   pTimeBaseCfg.Mode = HRTIM_MODE_CONTINUOUS;
   if (HAL_HRTIM_TimeBaseConfig(&hhrtim1, HRTIM_TIMERINDEX_TIMER_A, &pTimeBaseCfg) != HAL_OK)
   {
