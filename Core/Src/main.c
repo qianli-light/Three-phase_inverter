@@ -19,7 +19,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "adc.h"
-#include "cordic.h"
 #include "dma.h"
 #include "hrtim.h"
 #include "spi.h"
@@ -77,27 +76,26 @@ const float calc_phy_conv_current_offset_0005=20.45f;
 const float phy_calc_conv_offset=2045;
 
 float hzc=5.0f;
-float frequency=50.0f;
+float frequency=60.0f;
+float num=200;
+float fhrtim=160000000;
+float div=7;
 
 enum EC_DeBug now_EC_DeBug=vm_;
 
 SV S={0};
 QPR QPR1={0},QPR2={0};
 SVPWM SVPWM1={0};
-float p1,p2;
 
-uint16_t ADC1_value[3],ADC2_value[4];
+uint16_t ADC1_value[3],ADC2_value[3];
 
-CORDIC_ConfigTypeDef sConfig;
-
-float va_setpoint,vb_setpoint,ia_setpoint,ib_setpoint;
-float calc_va_setpoint,calc_vb_setpoint,calc_ia_setpoint,calc_ib_setpoint;
-float va_measurement,vb_measurement,vc_measurement,ia_measurement,ib_measurement,ic_measurement;
-float va_control,vb_control;
+float va_setpoint,vb_setpoint;
+float va_measurement,vb_measurement,vc_measurement;
+float vdc_measurement;
 float a,b,c,d,f;//中间值
 float va_setpoint_data[200];
 float vb_setpoint_data[200];
-float gain;
+float den;
 
 
 
@@ -163,22 +161,19 @@ int main(void)
   MX_ADC1_Init();
   MX_ADC2_Init();
   MX_HRTIM1_Init();
-  MX_CORDIC_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-
   HAL_TIM_Base_Start(&htim3);
   HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_4);
-  __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_4,2500);
-
 
   OLED_Init();
-  SV_init(&S,5.0f);
-  QPR_Init(&QPR1,2*PI*hzc);
-  QPR_Init(&QPR2,2*PI*hzc);
+
+  SV_init(&S,26.12789f,frequency,num);
+  QPR_Init(&QPR1,2*PI*hzc,frequency,num);
+  QPR_Init(&QPR2,2*PI*hzc,frequency,num);
   QPR1.kp=0.3f,QPR1.kr=20.0f;
   QPR2.kp=0.3f,QPR2.kr=20.0f;
-  SVPWM_init(&SVPWM1,30.0f);
+  SVPWM_init(&SVPWM1,60.0f,frequency,num,div,fhrtim);
 
   HAL_ADCEx_Calibration_Start(&hadc1,ADC_DIFFERENTIAL_ENDED);
   HAL_ADC_Start_DMA(&hadc1,(uint32_t*)ADC1_value,sizeof(ADC1_value)/sizeof(uint16_t));
@@ -195,27 +190,27 @@ int main(void)
   HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TB1|HRTIM_OUTPUT_TB2);//开启通道输出
   HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TC1|HRTIM_OUTPUT_TC2);//开启通道输出
 
-  get_va_setpoint_data(va_setpoint_data,200);
-  get_vb_setpoint_data(vb_setpoint_data,200);
+  get_va_setpoint_data(va_setpoint_data,num);
+  get_vb_setpoint_data(vb_setpoint_data,num);
 
   __HAL_HRTIM_TIMER_ENABLE_IT(&hhrtim1,HRTIM_TIMERINDEX_TIMER_A,HRTIM_TIM_IT_UPD);//开启更新中断,开启QPR
 
   DeBug_interface_head();
 
-
-
-  __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_4,0);
+  HAL_TIM_PWM_Stop(&htim3,TIM_CHANNEL_4);
+  HAL_TIM_Base_Stop(&htim3);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    vc_measurement=ADC2_value[2]*calc_phy_conv_voltage_0003-calc_phy_conv_voltage_offset_0003;
-    ic_measurement=ADC1_value[2]*calc_phy_conv_current_0003-calc_phy_conv_current_offset_0003;
+    vc_measurement=ADC1_value[1]*calc_phy_conv_voltage_0003-calc_phy_conv_voltage_offset_0003;
+    vdc_measurement=ADC2_value[1]*calc_phy_conv_voltage_0004-calc_phy_conv_voltage_offset_0004;
 
     three_phase_inverter_interface_main();
     DeBug_interface_main();
+
 
    // VOFA_SendFloatDMA(&huart4,(float[]){va_setpoint,vb_setpoint},2);
     /* USER CODE END WHILE */
@@ -236,7 +231,7 @@ void SystemClock_Config(void)
 
   /** Configure the main internal regulator output voltage
   */
-  HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1);
+  HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1_BOOST);
 
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
@@ -246,7 +241,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV1;
-  RCC_OscInitStruct.PLL.PLLN = 25;
+  RCC_OscInitStruct.PLL.PLLN = 42;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
   RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
@@ -264,18 +259,18 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
   {
     Error_Handler();
   }
 }
 
 /* USER CODE BEGIN 4 */
-inline void QPR_Init(QPR *QPR,float wc) {
+inline void QPR_Init(QPR *QPR,float wc,float frequency,float num) {
   QPR->wc=wc;
-  QPR->t=0.005f/frequency;
+  QPR->t_control=1.0f/frequency/num;
   QPR->w0=2.0*PI*frequency;
-  QPR->k=2.0f/QPR->t;
+  QPR->k=2.0f/QPR->t_control;
 
    // QPR->w0 = QPR->k * tanf(QPR->w0 * QPR->t / 2.0f);   // 用畸变后的值参与系数计算
    // QPR->wc = QPR->k * tanf(QPR->wc * QPR->t / 2.0f);
@@ -292,6 +287,9 @@ inline void QPR_Init(QPR *QPR,float wc) {
   QPR->y1=0;
   QPR->y2=0;
   QPR->u0=0;
+  QPR->u1=0;
+  QPR->q0=0;
+  QPR->q1=0;
 }
 
 float QPR_Compute(QPR *QPR,float e0) {
@@ -307,9 +305,9 @@ float QPR_Compute(QPR *QPR,float e0) {
   return QPR->u0;
 }
 void QPR_QSG_Compute(QPR *QPR,float e0) {
-  QPR->y0=QPR->b0*e0+QPR->b2*QPR->e2-QPR->a1*QPR->y1-QPR->a2*QPR->y2;
+  QPR->y0=QPR->b0*(e0-QPR->e2)-QPR->a1*QPR->y1-QPR->a2*QPR->y2;
   QPR->u0=QPR->kp*e0+QPR->kr*QPR->y0;
-  QPR->q0=QPR->q1+(QPR->u0+QPR->u1)*0.5f*QPR->w0*QPR->t;
+  QPR->q0=QPR->q1+(QPR->u0+QPR->u1)*0.5f*QPR->w0*QPR->t_control;
 
   QPR->e2=QPR->e1;
   QPR->e1=e0;
@@ -322,11 +320,11 @@ float P_Compute(float p,float e0) {
   return (p*e0);
 }
 
-void SV_init(SV *S,float vm) {
+void SV_init(SV *S,float vm,float frequency,float num) {
   S->theta=0;
   S->vm=vm;
-  S->t0=0.005/frequency;
-  S->w0=2.0*PI*frequency;
+  S->t_control=1.0f/frequency/num;
+  S->wout=2.0*PI*frequency;
 }
 int32_t rad_to_q31(float rad) {
   float norm_rad=rad/PI;
@@ -342,15 +340,14 @@ float sin_cos_q31_to_float(int32_t sin_cos_q31_value) {
 //   calc_vb_setpoint=vb_setpoint*phy_calc_conv_voltage_0002+phy_calc_conv_offset;
 // }
 void calc_conv_phy(void) {
-  va_measurement=ADC2_value[0]*calc_phy_conv_voltage_0001-calc_phy_conv_voltage_offset_0001;
-  vb_measurement=ADC2_value[1]*calc_phy_conv_voltage_0002-calc_phy_conv_voltage_offset_0002;
-  ia_measurement=ADC1_value[0]*calc_phy_conv_current_0001-calc_phy_conv_current_offset_0001;
-  ib_measurement=ADC1_value[1]*calc_phy_conv_current_0002-calc_phy_conv_current_offset_0002;
+  va_measurement=ADC1_value[0]*calc_phy_conv_voltage_0001-calc_phy_conv_voltage_offset_0001;
+  vb_measurement=ADC2_value[0]*calc_phy_conv_voltage_0002-calc_phy_conv_voltage_offset_0002;
+
 }
-void SVPWM_init(SVPWM *SVPWM,float vdc) {
+void SVPWM_init(SVPWM *SVPWM,float vdc,float frequency,float num,float div,float fhrtim) {
   SVPWM->vdc=vdc;
-  SVPWM->Ts=0.000625f/frequency;
-  SVPWM->arr=31250.0f/frequency;
+  SVPWM->Ts=1.0f/frequency/num/div;
+  SVPWM->arr=fhrtim/2.0f/div/frequency/num;
   SVPWM->mid=SVPWM->Ts/SVPWM->vdc;
 }
 void Midvalue_Compute(float va_control,float vb_control) {
@@ -427,10 +424,10 @@ void vector_actiontime(SVPWM *SVPWM,uint8_t sector) {
   }
   SVPWM->T0=SVPWM->Ts-SVPWM->T1-SVPWM->T2;
 }
-void frequency_conv(float frequency) {
-  HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].PERxR = 31250.0f/frequency;
-  HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].PERxR = 31250.0f/frequency;
-  HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].PERxR = 31250.0f/frequency;
+void frequency_conv(float fhrtim,float frequency,float div,float num) {
+  HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].PERxR = fhrtim/2.0f/div/frequency/num;
+  HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].PERxR = fhrtim/2.0f/div/frequency/num;
+  HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].PERxR = fhrtim/2.0f/div/frequency/num;
 }
 void vector_action(SVPWM *SVPWM,uint8_t sector) {
   switch (sector) {
@@ -490,6 +487,7 @@ void VOFA_SendFloatDMA(UART_HandleTypeDef *huart, float *data, uint16_t num)
   // 6. 启动 DMA 发送：发送 (数据 + 帧尾)
   HAL_UART_Transmit_DMA(huart, vofa_tx_buf, bytes_data + sizeof(vofa_tail));
 }
+
 void get_va_setpoint_data(float data[],int num) {
   for (int i=0;i<num;i++) {
     data[i] = S.vm*cos(2*i*PI/num);
@@ -505,19 +503,24 @@ void HAL_HRTIM_RegistersUpdateCallback(HRTIM_HandleTypeDef *hhrtim,uint32_t Time
   static uint8_t count1 = 0;
   if (TimerIdx==HRTIM_TIMERINDEX_TIMER_A) {
     count++;
-    if (count%8==0) {
+    if (count>252) {
+      count=0;
+    }
+    if (count%7==0) {
       va_setpoint=va_setpoint_data[count1];
       vb_setpoint=vb_setpoint_data[count1];
       count1++;
       if (count1>=200) {
         count1=0;
       }
+      //VOFA_SendFloatDMA(&huart4,(float[]){va_setpoint,vb_setpoint,count},3);
 
       calc_conv_phy();
       QPR_QSG_Compute(&QPR1,va_setpoint-va_measurement);
       QPR_QSG_Compute(&QPR2,vb_setpoint-vb_measurement);
-      SVPWM1.A_Phase=QPR1.u0/sqrtf(QPR1.u0*QPR1.u0+QPR1.q0*QPR1.q0);
-      SVPWM1.B_Phase=QPR2.u0/sqrtf(QPR2.u0*QPR2.u0+QPR2.q0*QPR2.q0);
+      den = sqrtf(QPR1.u0*QPR1.u0 + QPR1.q0*QPR1.q0);
+      SVPWM1.A_Phase = QPR1.u0 / den;
+      SVPWM1.B_Phase = QPR1.u0 / den;
       SVPWM1.C_Phase=-(SVPWM1.A_Phase+SVPWM1.B_Phase);
 
       harmonic_insert(&SVPWM1);
@@ -526,7 +529,8 @@ void HAL_HRTIM_RegistersUpdateCallback(HRTIM_HandleTypeDef *hhrtim,uint32_t Time
       HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR=SVPWM1.Vtb*SVPWM1.arr;
       HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_C].CMP1xR=SVPWM1.Vtc*SVPWM1.arr;
 
-      VOFA_SendFloatDMA(&huart4,(float[]){SVPWM1.Vta,SVPWM1.Vtb,SVPWM1.Vtc},3);
+      //VOFA_SendFloatDMA(&huart4,(float[]){SVPWM1.Vta,SVPWM1.Vtb,SVPWM1.Vtc},3);
+      //VOFA_SendFloatDMA(&huart4,(float[]){count,count1,den},3);
 
 
     }
@@ -535,7 +539,7 @@ void HAL_HRTIM_RegistersUpdateCallback(HRTIM_HandleTypeDef *hhrtim,uint32_t Time
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
   if (GPIO_Pin==EC11D_Pin)
   {
-    now_EC_DeBug=(now_EC_DeBug+1)%8;
+    now_EC_DeBug=(now_EC_DeBug+1)%7;
   }
   if (GPIO_Pin==EC11A_Pin)
   {
@@ -543,43 +547,30 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
       if (HAL_GPIO_ReadPin(EC11B_GPIO_Port,EC11B_Pin)==0) {
         switch (now_EC_DeBug) {
           case vm_:
-            S.vm+=0.5f;
+            S.vm+=0.2f;
             get_va_setpoint_data(va_setpoint_data,200);
             get_vb_setpoint_data(vb_setpoint_data,200);
-            gain=1.0f/S.vm;
-            QPR1.kp=0.1f*gain;
-            QPR1.kr=gain-QPR1.kp;
-            QPR2.kp=QPR1.kp;
-            QPR2.kr=QPR1.kr;
             break;
           case hzc_:
             hzc+=0.5f;
-            QPR1.wc=hzc*2.0f*PI;
-            QPR2.wc=hzc*2.0f*PI;
-            QPR_Init(&QPR1,2*PI*hzc);
-            QPR_Init(&QPR2,2*PI*hzc);
+            QPR_Init(&QPR1,2*PI*hzc,frequency,num);
+            QPR_Init(&QPR2,2*PI*hzc,frequency,num);
             break;
           case kp1_:
             QPR1.kp+=0.2f;
-            QPR_Init(&QPR1,2*PI*hzc);
-            break;
-          case kr1_:
-            QPR1.kr+=0.5f;
-            QPR_Init(&QPR1,2*PI*hzc);
             break;
           case kp2_:
             QPR2.kp+=0.2f;
-            QPR_Init(&QPR2,2*PI*hzc);
+            break;
+          case kr1_:
+            QPR1.kr+=0.5f;
             break;
           case kr2_:
             QPR2.kr+=0.5f;
-            QPR_Init(&QPR2,2*PI*hzc);
             break;
-          case p1_:
-            p1+=0.5f;
-            break;
-          case p2_:
-            p2+=0.5f;
+          case vdc_:
+            SVPWM1.vdc+=0.2f;
+            SVPWM_init(&SVPWM1,SVPWM1.vdc,frequency,num,div,fhrtim);
             break;
           default:
             break;
@@ -592,42 +583,30 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
       if (HAL_GPIO_ReadPin(EC11A_GPIO_Port,EC11A_Pin)==0) {
         switch (now_EC_DeBug) {
           case vm_:
-            S.vm-=0.5f;
+            S.vm-=0.2f;
             get_va_setpoint_data(va_setpoint_data,200);
             get_vb_setpoint_data(vb_setpoint_data,200);
-            QPR1.kp=0.1f*gain;
-            QPR1.kr=gain-QPR1.kp;
-            QPR2.kp=QPR1.kp;
-            QPR2.kr=QPR1.kr;
             break;
           case hzc_:
             hzc-=0.5f;
-            QPR1.wc=hzc*2.0f*PI;
-            QPR2.wc=hzc*2.0f*PI;
-            QPR_Init(&QPR1,2*PI*hzc);
-            QPR_Init(&QPR2,2*PI*hzc);
+            QPR_Init(&QPR1,2*PI*hzc,frequency,num);
+            QPR_Init(&QPR2,2*PI*hzc,frequency,num);
             break;
           case kp1_:
             QPR1.kp-=0.2f;
-            QPR_Init(&QPR1,2*PI*hzc);
-            break;
-          case kr1_:
-            QPR1.kr-=0.5f;
-            QPR_Init(&QPR1,2*PI*hzc);
             break;
           case kp2_:
             QPR2.kp-=0.2f;
-            QPR_Init(&QPR2,2*PI*hzc);
+            break;
+          case kr1_:
+            QPR1.kr-=0.5f;
             break;
           case kr2_:
             QPR2.kr-=0.5f;
-            QPR_Init(&QPR2,2*PI*hzc);
             break;
-          case p1_:
-            p1-=0.5f;
-            break;
-          case p2_:
-            p2-=0.5f;
+          case vdc_:
+            SVPWM1.vdc-=0.2f;
+            SVPWM_init(&SVPWM1,SVPWM1.vdc,frequency,num,div,fhrtim);
             break;
           default:
             break;
@@ -637,12 +616,11 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
   }
   if (GPIO_Pin==KEY0_Pin) {
       frequency*=0.5f;
-      S.t0=0.005/frequency;
-      S.w0=2.0*PI*frequency;
-      QPR_Init(&QPR1,2*PI*hzc);
-      QPR_Init(&QPR2,2*PI*hzc);
-      SVPWM_init(&SVPWM1,30.0f);
-      frequency_conv(frequency);
+      frequency_conv(fhrtim,frequency,div,num);
+      SV_init(&S,26.12789f,frequency,num);
+      QPR_Init(&QPR1,2*PI*hzc,frequency,num);
+      QPR_Init(&QPR2,2*PI*hzc,frequency,num);
+      SVPWM_init(&SVPWM1,60.0f,frequency,num,div,fhrtim);
   }
   if (GPIO_Pin==KEY1_Pin) {
 

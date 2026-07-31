@@ -47,14 +47,14 @@ extern "C" {
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
   typedef struct rotation_vector {
-    float w0;
-    float t0;
+    float wout;
+    float t_control;
     float theta;
     float vm;
   }SV;
   typedef struct PR {
     float w0;
-    float t;
+    float t_control;
     float k;
     float wc;
 
@@ -92,11 +92,10 @@ extern "C" {
     vm_=0,
     hzc_=1,
     kp1_=2,
-    kr1_=3,
-    kp2_=4,
+    kp2_=3,
+    kr1_=4,
     kr2_=5,
-    p1_=6,
-    p2_=7,
+    vdc_=6,
   };
 
   extern SV S;
@@ -107,20 +106,21 @@ extern "C" {
   extern float p1,p2;
   extern float hzc;
   extern float frequency;
-
+  extern float vdc_measurement;
+  extern SVPWM SVPWM1;
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-  void SV_init(SV *S,float vm);
-  void QPR_Init(QPR *QPR,float wc);
-  void SVPWM_init(SVPWM *SVPWM,float vdc);
+  void SV_init(SV *S,float vm,float frequency,float num);
+  void QPR_Init(QPR *QPR,float wc,float frequency,float num);
+  void SVPWM_init(SVPWM *SVPWM,float vdc,float frequency,float num,float div,float fhrtim);
   void VOFA_SendFloatDMA(UART_HandleTypeDef *huart, float *data, uint16_t num);
   void get_va_setpoint_data(float data[],int num);
   void get_vb_setpoint_data(float data[],int num);
-  void frequency_conv(float frequency);
+  void frequency_conv(float fhrtim,float frequency,float div,float num);
   void harmonic_insert(SVPWM *svpwm);
   void QPR_QSG_Compute(QPR *QPR,float e0);
 /* USER CODE END EFP */
