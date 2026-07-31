@@ -518,12 +518,13 @@ void HAL_HRTIM_RegistersUpdateCallback(HRTIM_HandleTypeDef *hhrtim,uint32_t Time
       calc_conv_phy();
       QPR_QSG_Compute(&QPR1,va_setpoint-va_measurement);
       QPR_QSG_Compute(&QPR2,vb_setpoint-vb_measurement);
-      den = sqrtf(QPR1.u0*QPR1.u0 + QPR1.q0*QPR1.q0);
-      SVPWM1.A_Phase = QPR1.u0 / den;
-      SVPWM1.B_Phase = QPR1.u0 / den;
+      SVPWM1.A_Phase = QPR1.u0 / sqrtf(QPR1.u0*QPR1.u0 + QPR1.q0*QPR1.q0);
+      SVPWM1.B_Phase = QPR2.u0 / sqrtf(QPR2.u0*QPR2.u0 + QPR2.q0*QPR2.q0);
       SVPWM1.C_Phase=-(SVPWM1.A_Phase+SVPWM1.B_Phase);
 
       harmonic_insert(&SVPWM1);
+
+      VOFA_SendFloatDMA(&huart4,(float[]){SVPWM1.A_Phase,SVPWM1.B_Phase,SVPWM1.C_Phase},3);
 
       HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR=SVPWM1.Vta*SVPWM1.arr;
       HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_B].CMP1xR=SVPWM1.Vtb*SVPWM1.arr;

@@ -3283,8 +3283,6 @@ Discarded input sections
                 0x00000000      0x128 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
  .text.HAL_UART_Receive_IT
                 0x00000000       0x98 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
- .text.HAL_UART_Transmit_DMA
-                0x00000000      0x100 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
  .text.HAL_UART_Receive_DMA
                 0x00000000       0x98 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
  .text.HAL_UART_DMAPause
@@ -3305,8 +3303,6 @@ Discarded input sections
                 0x00000000      0x134 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
  .text.HAL_UART_AbortReceive_IT
                 0x00000000      0x18c cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
- .text.HAL_UART_TxHalfCpltCallback
-                0x00000000       0x14 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
  .text.HAL_UART_RxCpltCallback
                 0x00000000       0x14 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
  .text.HAL_UART_RxHalfCpltCallback
@@ -3343,18 +3339,10 @@ Discarded input sections
                 0x00000000      0x244 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
  .text.UART_Start_Receive_DMA
                 0x00000000      0x14c cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
- .text.UART_EndTxTransfer
-                0x00000000       0x82 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
- .text.UART_DMATransmitCplt
-                0x00000000       0x9a cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
- .text.UART_DMATxHalfCplt
-                0x00000000       0x1c cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
  .text.UART_DMAReceiveCplt
                 0x00000000      0x162 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
  .text.UART_DMARxHalfCplt
                 0x00000000       0x72 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
- .text.UART_DMAError
-                0x00000000       0x70 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
  .text.UART_DMATxAbortCallback
                 0x00000000       0x7c cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
  .text.UART_DMARxAbortCallback
@@ -3909,8 +3897,6 @@ Discarded input sections
                 0x00000000       0x32 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
  .rodata.vofa_tail
                 0x00000000        0x4 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
- .bss.vofa_tx_buf
-                0x00000000      0x104 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
  .text.QPR_Compute
                 0x00000000       0xb8 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
  .text.P_Compute
@@ -3927,8 +3913,6 @@ Discarded input sections
                 0x00000000      0x1f4 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
  .text.vector_action
                 0x00000000      0x4bc CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
- .text.VOFA_SendFloatDMA
-                0x00000000       0x60 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
  .debug_macro   0x00000000      0xad8 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
  .debug_macro   0x00000000      0x16d CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
  .debug_macro   0x00000000       0x2e CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
@@ -5387,21 +5371,6 @@ Discarded input sections
  .text          0x00000000        0x0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
  .data          0x00000000        0x0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
  .bss           0x00000000        0x0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
- .text.memcpy   0x00000000       0x1c F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
- .debug_info    0x00000000      0x121 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
- .debug_abbrev  0x00000000       0xc1 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
- .debug_loclists
-                0x00000000       0xad F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
- .debug_aranges
-                0x00000000       0x20 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
- .debug_rnglists
-                0x00000000       0x13 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
- .debug_line    0x00000000      0x202 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
- .debug_str     0x00000000      0x22f F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
- .comment       0x00000000       0x44 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
- .debug_frame   0x00000000       0x28 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
- .ARM.attributes
-                0x00000000       0x34 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
  .text          0x00000000        0x0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-freer.o)
  .data          0x00000000        0x0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-freer.o)
  .bss           0x00000000        0x0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-freer.o)
@@ -5713,7 +5682,7 @@ LOAD F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-
                 0x08000000                g_pfnVectors
                 0x080001d8                        . = ALIGN (0x4)
 
-.text           0x080001d8     0xda4c
+.text           0x080001d8     0xdda8
                 0x080001d8                        . = ALIGN (0x4)
  *(.text)
  .text          0x080001d8       0x40 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
@@ -6234,524 +6203,544 @@ LOAD F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-
  .text.HAL_UART_Init
                 0x080083fc       0xa0 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
                 0x080083fc                HAL_UART_Init
+ .text.HAL_UART_Transmit_DMA
+                0x0800849c      0x100 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x0800849c                HAL_UART_Transmit_DMA
  .text.HAL_UART_IRQHandler
-                0x0800849c      0x684 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
-                0x0800849c                HAL_UART_IRQHandler
+                0x0800859c      0x684 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x0800859c                HAL_UART_IRQHandler
  .text.HAL_UART_TxCpltCallback
-                0x08008b20       0x14 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
-                0x08008b20                HAL_UART_TxCpltCallback
+                0x08008c20       0x14 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x08008c20                HAL_UART_TxCpltCallback
+ .text.HAL_UART_TxHalfCpltCallback
+                0x08008c34       0x14 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x08008c34                HAL_UART_TxHalfCpltCallback
  .text.HAL_UART_ErrorCallback
-                0x08008b34       0x14 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
-                0x08008b34                HAL_UART_ErrorCallback
+                0x08008c48       0x14 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x08008c48                HAL_UART_ErrorCallback
  .text.HAL_UARTEx_RxEventCallback
-                0x08008b48       0x18 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
-                0x08008b48                HAL_UARTEx_RxEventCallback
+                0x08008c5c       0x18 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x08008c5c                HAL_UARTEx_RxEventCallback
  .text.UART_SetConfig
-                0x08008b60      0x5f8 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
-                0x08008b60                UART_SetConfig
+                0x08008c74      0x5f8 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x08008c74                UART_SetConfig
  .text.UART_AdvFeatureConfig
-                0x08009158      0x144 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
-                0x08009158                UART_AdvFeatureConfig
+                0x0800926c      0x144 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x0800926c                UART_AdvFeatureConfig
  .text.UART_CheckIdleState
-                0x0800929c      0x154 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
-                0x0800929c                UART_CheckIdleState
+                0x080093b0      0x154 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x080093b0                UART_CheckIdleState
  .text.UART_WaitOnFlagUntilTimeout
-                0x080093f0       0xda cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
-                0x080093f0                UART_WaitOnFlagUntilTimeout
+                0x08009504       0xda cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x08009504                UART_WaitOnFlagUntilTimeout
+ .text.UART_EndTxTransfer
+                0x080095de       0x82 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
  .text.UART_EndRxTransfer
-                0x080094ca       0xcc cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x08009660       0xcc cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+ .text.UART_DMATransmitCplt
+                0x0800972c       0x9a cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+ .text.UART_DMATxHalfCplt
+                0x080097c6       0x1c cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+ .text.UART_DMAError
+                0x080097e2       0x70 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
  .text.UART_DMAAbortOnError
-                0x08009596       0x1c cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x08009852       0x1c cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
  .text.UART_EndTransmit_IT
-                0x080095b2       0x56 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x0800986e       0x56 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
  .text.HAL_UARTEx_WakeupCallback
-                0x08009608       0x14 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
-                0x08009608                HAL_UARTEx_WakeupCallback
+                0x080098c4       0x14 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+                0x080098c4                HAL_UARTEx_WakeupCallback
  .text.HAL_UARTEx_RxFifoFullCallback
-                0x0800961c       0x14 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
-                0x0800961c                HAL_UARTEx_RxFifoFullCallback
+                0x080098d8       0x14 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+                0x080098d8                HAL_UARTEx_RxFifoFullCallback
  .text.HAL_UARTEx_TxFifoEmptyCallback
-                0x08009630       0x14 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
-                0x08009630                HAL_UARTEx_TxFifoEmptyCallback
+                0x080098ec       0x14 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+                0x080098ec                HAL_UARTEx_TxFifoEmptyCallback
  .text.HAL_UARTEx_DisableFifoMode
-                0x08009644       0x72 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
-                0x08009644                HAL_UARTEx_DisableFifoMode
+                0x08009900       0x72 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+                0x08009900                HAL_UARTEx_DisableFifoMode
  .text.HAL_UARTEx_SetTxFifoThreshold
-                0x080096b6       0x7c cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
-                0x080096b6                HAL_UARTEx_SetTxFifoThreshold
+                0x08009972       0x7c cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+                0x08009972                HAL_UARTEx_SetTxFifoThreshold
  .text.HAL_UARTEx_SetRxFifoThreshold
-                0x08009732       0x7c cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
-                0x08009732                HAL_UARTEx_SetRxFifoThreshold
- *fill*         0x080097ae        0x2 
+                0x080099ee       0x7c cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+                0x080099ee                HAL_UARTEx_SetRxFifoThreshold
+ *fill*         0x08009a6a        0x2 
  .text.UARTEx_SetNbDataToProcess
-                0x080097b0       0x9c cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+                0x08009a6c       0x9c cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
  .text.three_phase_inverter_interface_head
-                0x0800984c       0x50 CMakeFiles/Three-phase_inverter.dir/Core/Src/MY_OLED.c.obj
-                0x0800984c                three_phase_inverter_interface_head
+                0x08009b08       0x50 CMakeFiles/Three-phase_inverter.dir/Core/Src/MY_OLED.c.obj
+                0x08009b08                three_phase_inverter_interface_head
  .text.three_phase_inverter_interface_main
-                0x0800989c       0x98 CMakeFiles/Three-phase_inverter.dir/Core/Src/MY_OLED.c.obj
-                0x0800989c                three_phase_inverter_interface_main
+                0x08009b58       0x98 CMakeFiles/Three-phase_inverter.dir/Core/Src/MY_OLED.c.obj
+                0x08009b58                three_phase_inverter_interface_main
  .text.DeBug_interface_head
-                0x08009934       0x8c CMakeFiles/Three-phase_inverter.dir/Core/Src/MY_OLED.c.obj
-                0x08009934                DeBug_interface_head
+                0x08009bf0       0x8c CMakeFiles/Three-phase_inverter.dir/Core/Src/MY_OLED.c.obj
+                0x08009bf0                DeBug_interface_head
  .text.DeBug_interface_main
-                0x080099c0      0x1fc CMakeFiles/Three-phase_inverter.dir/Core/Src/MY_OLED.c.obj
-                0x080099c0                DeBug_interface_main
+                0x08009c7c      0x1fc CMakeFiles/Three-phase_inverter.dir/Core/Src/MY_OLED.c.obj
+                0x08009c7c                DeBug_interface_main
  .text.OLED_W_RES
-                0x08009bbc       0x24 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
-                0x08009bbc                OLED_W_RES
+                0x08009e78       0x24 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
+                0x08009e78                OLED_W_RES
  .text.OLED_W_DC
-                0x08009be0       0x24 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
-                0x08009be0                OLED_W_DC
+                0x08009e9c       0x24 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
+                0x08009e9c                OLED_W_DC
  .text.OLED_GPIO_Init
-                0x08009c04       0x5a CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
-                0x08009c04                OLED_GPIO_Init
- *fill*         0x08009c5e        0x2 
+                0x08009ec0       0x5a CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
+                0x08009ec0                OLED_GPIO_Init
+ *fill*         0x08009f1a        0x2 
  .text.OLED_SPI_SendByte
-                0x08009c60       0x24 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
-                0x08009c60                OLED_SPI_SendByte
+                0x08009f1c       0x24 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
+                0x08009f1c                OLED_SPI_SendByte
  .text.OLED_WriteCommand
-                0x08009c84       0x20 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
-                0x08009c84                OLED_WriteCommand
+                0x08009f40       0x20 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
+                0x08009f40                OLED_WriteCommand
  .text.OLED_WriteData
-                0x08009ca4       0x3e CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
-                0x08009ca4                OLED_WriteData
+                0x08009f60       0x3e CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
+                0x08009f60                OLED_WriteData
  .text.OLED_Init
-                0x08009ce2       0x9e CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
-                0x08009ce2                OLED_Init
+                0x08009f9e       0x9e CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
+                0x08009f9e                OLED_Init
  .text.OLED_SetCursor
-                0x08009d80       0x46 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
-                0x08009d80                OLED_SetCursor
+                0x0800a03c       0x46 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
+                0x0800a03c                OLED_SetCursor
  .text.OLED_Pow
-                0x08009dc6       0x32 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
-                0x08009dc6                OLED_Pow
+                0x0800a082       0x32 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
+                0x0800a082                OLED_Pow
  .text.OLED_Update
-                0x08009df8       0x40 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
-                0x08009df8                OLED_Update
+                0x0800a0b4       0x40 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
+                0x0800a0b4                OLED_Update
  .text.OLED_Clear
-                0x08009e38       0x50 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
-                0x08009e38                OLED_Clear
+                0x0800a0f4       0x50 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
+                0x0800a0f4                OLED_Clear
  .text.OLED_ClearArea
-                0x08009e88       0xec CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
-                0x08009e88                OLED_ClearArea
+                0x0800a144       0xec CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
+                0x0800a144                OLED_ClearArea
  .text.OLED_ShowChar
-                0x08009f74       0x7c CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
-                0x08009f74                OLED_ShowChar
+                0x0800a230       0x7c CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
+                0x0800a230                OLED_ShowChar
  .text.OLED_ShowString
-                0x08009ff0      0x284 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
-                0x08009ff0                OLED_ShowString
+                0x0800a2ac      0x284 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
+                0x0800a2ac                OLED_ShowString
  .text.OLED_ShowNum
-                0x0800a274       0x90 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
-                0x0800a274                OLED_ShowNum
+                0x0800a530       0x90 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
+                0x0800a530                OLED_ShowNum
  .text.OLED_ShowFloatNum
-                0x0800a304      0x15c CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
-                0x0800a304                OLED_ShowFloatNum
+                0x0800a5c0      0x15c CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
+                0x0800a5c0                OLED_ShowFloatNum
  .text.OLED_ShowImage
-                0x0800a460      0x1c8 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
-                0x0800a460                OLED_ShowImage
- .text.main     0x0800a628      0x270 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
-                0x0800a628                main
+                0x0800a71c      0x1c8 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
+                0x0800a71c                OLED_ShowImage
+ .text.main     0x0800a8e4      0x270 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+                0x0800a8e4                main
  .text.SystemClock_Config
-                0x0800a898       0x92 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
-                0x0800a898                SystemClock_Config
- *fill*         0x0800a92a        0x2 
+                0x0800ab54       0x92 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+                0x0800ab54                SystemClock_Config
+ *fill*         0x0800abe6        0x2 
  .text.QPR_Init
-                0x0800a92c      0x1a4 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
-                0x0800a92c                QPR_Init
+                0x0800abe8      0x1a4 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+                0x0800abe8                QPR_Init
  .text.QPR_QSG_Compute
-                0x0800aad0       0xf0 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
-                0x0800aad0                QPR_QSG_Compute
- .text.SV_init  0x0800abc0       0x60 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
-                0x0800abc0                SV_init
+                0x0800ad8c       0xf0 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+                0x0800ad8c                QPR_QSG_Compute
+ .text.SV_init  0x0800ae7c       0x60 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+                0x0800ae7c                SV_init
  .text.calc_conv_phy
-                0x0800ac20       0x74 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
-                0x0800ac20                calc_conv_phy
+                0x0800aedc       0x74 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+                0x0800aedc                calc_conv_phy
  .text.SVPWM_init
-                0x0800ac94       0x90 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
-                0x0800ac94                SVPWM_init
+                0x0800af50       0x90 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+                0x0800af50                SVPWM_init
  .text.harmonic_insert
-                0x0800ad24      0x130 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
-                0x0800ad24                harmonic_insert
+                0x0800afe0      0x130 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+                0x0800afe0                harmonic_insert
  .text.frequency_conv
-                0x0800ae54       0xbc CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
-                0x0800ae54                frequency_conv
+                0x0800b110       0xbc CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+                0x0800b110                frequency_conv
+ .text.VOFA_SendFloatDMA
+                0x0800b1cc       0x60 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+                0x0800b1cc                VOFA_SendFloatDMA
  .text.get_va_setpoint_data
-                0x0800af10       0x98 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
-                0x0800af10                get_va_setpoint_data
+                0x0800b22c       0x98 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+                0x0800b22c                get_va_setpoint_data
+ *fill*         0x0800b2c4        0x4 
  .text.get_vb_setpoint_data
-                0x0800afa8       0xb8 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
-                0x0800afa8                get_vb_setpoint_data
+                0x0800b2c8       0xb8 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+                0x0800b2c8                get_vb_setpoint_data
  .text.HAL_HRTIM_RegistersUpdateCallback
-                0x0800b060      0x1dc CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
-                0x0800b060                HAL_HRTIM_RegistersUpdateCallback
+                0x0800b380      0x200 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+                0x0800b380                HAL_HRTIM_RegistersUpdateCallback
  .text.HAL_GPIO_EXTI_Callback
-                0x0800b23c      0x4d0 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
-                0x0800b23c                HAL_GPIO_EXTI_Callback
+                0x0800b580      0x4d0 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+                0x0800b580                HAL_GPIO_EXTI_Callback
  .text.Error_Handler
-                0x0800b70c        0xc CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
-                0x0800b70c                Error_Handler
+                0x0800ba50        0xc CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+                0x0800ba50                Error_Handler
  .text.MX_GPIO_Init
-                0x0800b718      0x170 CMakeFiles/Three-phase_inverter.dir/Core/Src/gpio.c.obj
-                0x0800b718                MX_GPIO_Init
+                0x0800ba5c      0x170 CMakeFiles/Three-phase_inverter.dir/Core/Src/gpio.c.obj
+                0x0800ba5c                MX_GPIO_Init
  .text.MX_ADC1_Init
-                0x0800b888      0x134 CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
-                0x0800b888                MX_ADC1_Init
+                0x0800bbcc      0x134 CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
+                0x0800bbcc                MX_ADC1_Init
  .text.MX_ADC2_Init
-                0x0800b9bc      0x110 CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
-                0x0800b9bc                MX_ADC2_Init
+                0x0800bd00      0x110 CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
+                0x0800bd00                MX_ADC2_Init
  .text.HAL_ADC_MspInit
-                0x0800bacc      0x2d8 CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
-                0x0800bacc                HAL_ADC_MspInit
+                0x0800be10      0x2d8 CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
+                0x0800be10                HAL_ADC_MspInit
  .text.MX_DMA_Init
-                0x0800bda4       0x84 CMakeFiles/Three-phase_inverter.dir/Core/Src/dma.c.obj
-                0x0800bda4                MX_DMA_Init
+                0x0800c0e8       0x84 CMakeFiles/Three-phase_inverter.dir/Core/Src/dma.c.obj
+                0x0800c0e8                MX_DMA_Init
  .text.MX_HRTIM1_Init
-                0x0800be28      0x3c4 CMakeFiles/Three-phase_inverter.dir/Core/Src/hrtim.c.obj
-                0x0800be28                MX_HRTIM1_Init
+                0x0800c16c      0x3c4 CMakeFiles/Three-phase_inverter.dir/Core/Src/hrtim.c.obj
+                0x0800c16c                MX_HRTIM1_Init
  .text.HAL_HRTIM_MspInit
-                0x0800c1ec       0x4c CMakeFiles/Three-phase_inverter.dir/Core/Src/hrtim.c.obj
-                0x0800c1ec                HAL_HRTIM_MspInit
+                0x0800c530       0x4c CMakeFiles/Three-phase_inverter.dir/Core/Src/hrtim.c.obj
+                0x0800c530                HAL_HRTIM_MspInit
  .text.HAL_HRTIM_MspPostInit
-                0x0800c238       0xac CMakeFiles/Three-phase_inverter.dir/Core/Src/hrtim.c.obj
-                0x0800c238                HAL_HRTIM_MspPostInit
+                0x0800c57c       0xac CMakeFiles/Three-phase_inverter.dir/Core/Src/hrtim.c.obj
+                0x0800c57c                HAL_HRTIM_MspPostInit
  .text.MX_SPI3_Init
-                0x0800c2e4       0x7c CMakeFiles/Three-phase_inverter.dir/Core/Src/spi.c.obj
-                0x0800c2e4                MX_SPI3_Init
+                0x0800c628       0x7c CMakeFiles/Three-phase_inverter.dir/Core/Src/spi.c.obj
+                0x0800c628                MX_SPI3_Init
  .text.HAL_SPI_MspInit
-                0x0800c360      0x130 CMakeFiles/Three-phase_inverter.dir/Core/Src/spi.c.obj
-                0x0800c360                HAL_SPI_MspInit
+                0x0800c6a4      0x130 CMakeFiles/Three-phase_inverter.dir/Core/Src/spi.c.obj
+                0x0800c6a4                HAL_SPI_MspInit
  .text.MX_TIM3_Init
-                0x0800c490       0xf0 CMakeFiles/Three-phase_inverter.dir/Core/Src/tim.c.obj
-                0x0800c490                MX_TIM3_Init
+                0x0800c7d4       0xf0 CMakeFiles/Three-phase_inverter.dir/Core/Src/tim.c.obj
+                0x0800c7d4                MX_TIM3_Init
  .text.HAL_TIM_Base_MspInit
-                0x0800c580       0x40 CMakeFiles/Three-phase_inverter.dir/Core/Src/tim.c.obj
-                0x0800c580                HAL_TIM_Base_MspInit
+                0x0800c8c4       0x40 CMakeFiles/Three-phase_inverter.dir/Core/Src/tim.c.obj
+                0x0800c8c4                HAL_TIM_Base_MspInit
  .text.HAL_TIM_MspPostInit
-                0x0800c5c0       0x70 CMakeFiles/Three-phase_inverter.dir/Core/Src/tim.c.obj
-                0x0800c5c0                HAL_TIM_MspPostInit
+                0x0800c904       0x70 CMakeFiles/Three-phase_inverter.dir/Core/Src/tim.c.obj
+                0x0800c904                HAL_TIM_MspPostInit
  .text.MX_UART4_Init
-                0x0800c630       0x98 CMakeFiles/Three-phase_inverter.dir/Core/Src/usart.c.obj
-                0x0800c630                MX_UART4_Init
+                0x0800c974       0x98 CMakeFiles/Three-phase_inverter.dir/Core/Src/usart.c.obj
+                0x0800c974                MX_UART4_Init
  .text.HAL_UART_MspInit
-                0x0800c6c8      0x11c CMakeFiles/Three-phase_inverter.dir/Core/Src/usart.c.obj
-                0x0800c6c8                HAL_UART_MspInit
+                0x0800ca0c      0x11c CMakeFiles/Three-phase_inverter.dir/Core/Src/usart.c.obj
+                0x0800ca0c                HAL_UART_MspInit
  .text.NMI_Handler
-                0x0800c7e4        0x8 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c7e4                NMI_Handler
+                0x0800cb28        0x8 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cb28                NMI_Handler
  .text.HardFault_Handler
-                0x0800c7ec        0x8 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c7ec                HardFault_Handler
+                0x0800cb30        0x8 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cb30                HardFault_Handler
  .text.MemManage_Handler
-                0x0800c7f4        0x8 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c7f4                MemManage_Handler
+                0x0800cb38        0x8 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cb38                MemManage_Handler
  .text.BusFault_Handler
-                0x0800c7fc        0x8 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c7fc                BusFault_Handler
+                0x0800cb40        0x8 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cb40                BusFault_Handler
  .text.UsageFault_Handler
-                0x0800c804        0x8 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c804                UsageFault_Handler
+                0x0800cb48        0x8 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cb48                UsageFault_Handler
  .text.SVC_Handler
-                0x0800c80c        0xe CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c80c                SVC_Handler
+                0x0800cb50        0xe CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cb50                SVC_Handler
  .text.DebugMon_Handler
-                0x0800c81a        0xe CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c81a                DebugMon_Handler
+                0x0800cb5e        0xe CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cb5e                DebugMon_Handler
  .text.PendSV_Handler
-                0x0800c828        0xe CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c828                PendSV_Handler
+                0x0800cb6c        0xe CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cb6c                PendSV_Handler
  .text.SysTick_Handler
-                0x0800c836        0xc CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c836                SysTick_Handler
+                0x0800cb7a        0xc CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cb7a                SysTick_Handler
  .text.EXTI0_IRQHandler
-                0x0800c842        0xe CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c842                EXTI0_IRQHandler
+                0x0800cb86        0xe CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cb86                EXTI0_IRQHandler
  .text.EXTI2_IRQHandler
-                0x0800c850        0xe CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c850                EXTI2_IRQHandler
- *fill*         0x0800c85e        0x2 
+                0x0800cb94        0xe CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cb94                EXTI2_IRQHandler
+ *fill*         0x0800cba2        0x2 
  .text.DMA1_Channel1_IRQHandler
-                0x0800c860       0x14 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c860                DMA1_Channel1_IRQHandler
+                0x0800cba4       0x14 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cba4                DMA1_Channel1_IRQHandler
  .text.DMA1_Channel2_IRQHandler
-                0x0800c874       0x14 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c874                DMA1_Channel2_IRQHandler
+                0x0800cbb8       0x14 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cbb8                DMA1_Channel2_IRQHandler
  .text.DMA1_Channel3_IRQHandler
-                0x0800c888       0x14 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c888                DMA1_Channel3_IRQHandler
+                0x0800cbcc       0x14 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cbcc                DMA1_Channel3_IRQHandler
  .text.DMA1_Channel4_IRQHandler
-                0x0800c89c       0x14 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c89c                DMA1_Channel4_IRQHandler
+                0x0800cbe0       0x14 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cbe0                DMA1_Channel4_IRQHandler
  .text.ADC1_2_IRQHandler
-                0x0800c8b0       0x1c CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c8b0                ADC1_2_IRQHandler
+                0x0800cbf4       0x1c CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cbf4                ADC1_2_IRQHandler
  .text.EXTI15_10_IRQHandler
-                0x0800c8cc       0x28 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c8cc                EXTI15_10_IRQHandler
+                0x0800cc10       0x28 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cc10                EXTI15_10_IRQHandler
  .text.SPI3_IRQHandler
-                0x0800c8f4       0x14 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c8f4                SPI3_IRQHandler
+                0x0800cc38       0x14 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cc38                SPI3_IRQHandler
  .text.UART4_IRQHandler
-                0x0800c908       0x14 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c908                UART4_IRQHandler
+                0x0800cc4c       0x14 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cc4c                UART4_IRQHandler
  .text.HRTIM1_TIMA_IRQHandler
-                0x0800c91c       0x14 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
-                0x0800c91c                HRTIM1_TIMA_IRQHandler
+                0x0800cc60       0x14 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+                0x0800cc60                HRTIM1_TIMA_IRQHandler
  .text.HAL_MspInit
-                0x0800c930       0x58 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_hal_msp.c.obj
-                0x0800c930                HAL_MspInit
+                0x0800cc74       0x58 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_hal_msp.c.obj
+                0x0800cc74                HAL_MspInit
  .text.Reset_Handler
-                0x0800c988       0x50 CMakeFiles/Three-phase_inverter.dir/startup_stm32g474xx.s.obj
-                0x0800c988                Reset_Handler
+                0x0800cccc       0x50 CMakeFiles/Three-phase_inverter.dir/startup_stm32g474xx.s.obj
+                0x0800cccc                Reset_Handler
  .text.Default_Handler
-                0x0800c9d8        0x2 CMakeFiles/Three-phase_inverter.dir/startup_stm32g474xx.s.obj
-                0x0800c9d8                RTC_Alarm_IRQHandler
-                0x0800c9d8                TIM8_TRG_COM_IRQHandler
-                0x0800c9d8                TIM8_CC_IRQHandler
-                0x0800c9d8                HRTIM1_Master_IRQHandler
-                0x0800c9d8                SPI4_IRQHandler
-                0x0800c9d8                FDCAN3_IT0_IRQHandler
-                0x0800c9d8                TIM1_CC_IRQHandler
-                0x0800c9d8                HRTIM1_FLT_IRQHandler
-                0x0800c9d8                HRTIM1_TIMF_IRQHandler
-                0x0800c9d8                USB_HP_IRQHandler
-                0x0800c9d8                CORDIC_IRQHandler
-                0x0800c9d8                HRTIM1_TIMD_IRQHandler
-                0x0800c9d8                DMA2_Channel8_IRQHandler
-                0x0800c9d8                EXTI3_IRQHandler
-                0x0800c9d8                I2C3_ER_IRQHandler
-                0x0800c9d8                I2C2_EV_IRQHandler
-                0x0800c9d8                FPU_IRQHandler
-                0x0800c9d8                FDCAN1_IT1_IRQHandler
-                0x0800c9d8                TIM1_UP_TIM16_IRQHandler
-                0x0800c9d8                HRTIM1_TIME_IRQHandler
-                0x0800c9d8                SPI1_IRQHandler
-                0x0800c9d8                TIM6_DAC_IRQHandler
-                0x0800c9d8                HRTIM1_TIMC_IRQHandler
-                0x0800c9d8                TIM8_UP_IRQHandler
-                0x0800c9d8                DMA2_Channel2_IRQHandler
-                0x0800c9d8                TIM20_TRG_COM_IRQHandler
-                0x0800c9d8                USART3_IRQHandler
-                0x0800c9d8                DMA1_Channel7_IRQHandler
-                0x0800c9d8                UART5_IRQHandler
-                0x0800c9d8                ADC3_IRQHandler
-                0x0800c9d8                TIM4_IRQHandler
-                0x0800c9d8                DMA2_Channel1_IRQHandler
-                0x0800c9d8                QUADSPI_IRQHandler
-                0x0800c9d8                I2C1_EV_IRQHandler
-                0x0800c9d8                DMA1_Channel6_IRQHandler
-                0x0800c9d8                DMA2_Channel4_IRQHandler
-                0x0800c9d8                TIM3_IRQHandler
-                0x0800c9d8                RCC_IRQHandler
-                0x0800c9d8                TIM20_UP_IRQHandler
-                0x0800c9d8                Default_Handler
-                0x0800c9d8                DMA2_Channel7_IRQHandler
-                0x0800c9d8                RTC_TAMP_LSECSS_IRQHandler
-                0x0800c9d8                FMAC_IRQHandler
-                0x0800c9d8                DMA1_Channel8_IRQHandler
-                0x0800c9d8                TIM7_DAC_IRQHandler
-                0x0800c9d8                FDCAN3_IT1_IRQHandler
-                0x0800c9d8                TIM5_IRQHandler
-                0x0800c9d8                UCPD1_IRQHandler
-                0x0800c9d8                I2C3_EV_IRQHandler
-                0x0800c9d8                EXTI9_5_IRQHandler
-                0x0800c9d8                RTC_WKUP_IRQHandler
-                0x0800c9d8                PVD_PVM_IRQHandler
-                0x0800c9d8                SPI2_IRQHandler
-                0x0800c9d8                ADC5_IRQHandler
-                0x0800c9d8                DMA2_Channel5_IRQHandler
-                0x0800c9d8                CRS_IRQHandler
-                0x0800c9d8                DMA1_Channel5_IRQHandler
-                0x0800c9d8                USB_LP_IRQHandler
-                0x0800c9d8                EXTI4_IRQHandler
-                0x0800c9d8                RNG_IRQHandler
-                0x0800c9d8                HRTIM1_TIMB_IRQHandler
-                0x0800c9d8                TIM1_TRG_COM_TIM17_IRQHandler
-                0x0800c9d8                FDCAN2_IT1_IRQHandler
-                0x0800c9d8                ADC4_IRQHandler
-                0x0800c9d8                WWDG_IRQHandler
-                0x0800c9d8                I2C4_EV_IRQHandler
-                0x0800c9d8                FDCAN2_IT0_IRQHandler
-                0x0800c9d8                LPUART1_IRQHandler
-                0x0800c9d8                DMA2_Channel6_IRQHandler
-                0x0800c9d8                FDCAN1_IT0_IRQHandler
-                0x0800c9d8                TIM2_IRQHandler
-                0x0800c9d8                COMP7_IRQHandler
-                0x0800c9d8                COMP1_2_3_IRQHandler
-                0x0800c9d8                EXTI1_IRQHandler
-                0x0800c9d8                USART2_IRQHandler
-                0x0800c9d8                COMP4_5_6_IRQHandler
-                0x0800c9d8                TIM20_BRK_IRQHandler
-                0x0800c9d8                I2C2_ER_IRQHandler
-                0x0800c9d8                TIM8_BRK_IRQHandler
-                0x0800c9d8                FLASH_IRQHandler
-                0x0800c9d8                TIM20_CC_IRQHandler
-                0x0800c9d8                USART1_IRQHandler
-                0x0800c9d8                I2C1_ER_IRQHandler
-                0x0800c9d8                FMC_IRQHandler
-                0x0800c9d8                LPTIM1_IRQHandler
-                0x0800c9d8                DMAMUX_OVR_IRQHandler
-                0x0800c9d8                I2C4_ER_IRQHandler
-                0x0800c9d8                USBWakeUp_IRQHandler
-                0x0800c9d8                SAI1_IRQHandler
-                0x0800c9d8                DMA2_Channel3_IRQHandler
-                0x0800c9d8                TIM1_BRK_TIM15_IRQHandler
- *fill*         0x0800c9da        0x6 
- .text.cos      0x0800c9e0       0xa8 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_cos.o)
-                0x0800c9e0                cos
- .text.sqrtf    0x0800ca88       0x3c F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_sqrt.o)
-                0x0800ca88                sqrtf
- .text.fmaxf    0x0800cac4       0x3a F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fmax.o)
-                0x0800cac4                fmaxf
- .text.fminf    0x0800cafe       0x3a F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fmin.o)
-                0x0800cafe                fminf
+                0x0800cd1c        0x2 CMakeFiles/Three-phase_inverter.dir/startup_stm32g474xx.s.obj
+                0x0800cd1c                RTC_Alarm_IRQHandler
+                0x0800cd1c                TIM8_TRG_COM_IRQHandler
+                0x0800cd1c                TIM8_CC_IRQHandler
+                0x0800cd1c                HRTIM1_Master_IRQHandler
+                0x0800cd1c                SPI4_IRQHandler
+                0x0800cd1c                FDCAN3_IT0_IRQHandler
+                0x0800cd1c                TIM1_CC_IRQHandler
+                0x0800cd1c                HRTIM1_FLT_IRQHandler
+                0x0800cd1c                HRTIM1_TIMF_IRQHandler
+                0x0800cd1c                USB_HP_IRQHandler
+                0x0800cd1c                CORDIC_IRQHandler
+                0x0800cd1c                HRTIM1_TIMD_IRQHandler
+                0x0800cd1c                DMA2_Channel8_IRQHandler
+                0x0800cd1c                EXTI3_IRQHandler
+                0x0800cd1c                I2C3_ER_IRQHandler
+                0x0800cd1c                I2C2_EV_IRQHandler
+                0x0800cd1c                FPU_IRQHandler
+                0x0800cd1c                FDCAN1_IT1_IRQHandler
+                0x0800cd1c                TIM1_UP_TIM16_IRQHandler
+                0x0800cd1c                HRTIM1_TIME_IRQHandler
+                0x0800cd1c                SPI1_IRQHandler
+                0x0800cd1c                TIM6_DAC_IRQHandler
+                0x0800cd1c                HRTIM1_TIMC_IRQHandler
+                0x0800cd1c                TIM8_UP_IRQHandler
+                0x0800cd1c                DMA2_Channel2_IRQHandler
+                0x0800cd1c                TIM20_TRG_COM_IRQHandler
+                0x0800cd1c                USART3_IRQHandler
+                0x0800cd1c                DMA1_Channel7_IRQHandler
+                0x0800cd1c                UART5_IRQHandler
+                0x0800cd1c                ADC3_IRQHandler
+                0x0800cd1c                TIM4_IRQHandler
+                0x0800cd1c                DMA2_Channel1_IRQHandler
+                0x0800cd1c                QUADSPI_IRQHandler
+                0x0800cd1c                I2C1_EV_IRQHandler
+                0x0800cd1c                DMA1_Channel6_IRQHandler
+                0x0800cd1c                DMA2_Channel4_IRQHandler
+                0x0800cd1c                TIM3_IRQHandler
+                0x0800cd1c                RCC_IRQHandler
+                0x0800cd1c                TIM20_UP_IRQHandler
+                0x0800cd1c                Default_Handler
+                0x0800cd1c                DMA2_Channel7_IRQHandler
+                0x0800cd1c                RTC_TAMP_LSECSS_IRQHandler
+                0x0800cd1c                FMAC_IRQHandler
+                0x0800cd1c                DMA1_Channel8_IRQHandler
+                0x0800cd1c                TIM7_DAC_IRQHandler
+                0x0800cd1c                FDCAN3_IT1_IRQHandler
+                0x0800cd1c                TIM5_IRQHandler
+                0x0800cd1c                UCPD1_IRQHandler
+                0x0800cd1c                I2C3_EV_IRQHandler
+                0x0800cd1c                EXTI9_5_IRQHandler
+                0x0800cd1c                RTC_WKUP_IRQHandler
+                0x0800cd1c                PVD_PVM_IRQHandler
+                0x0800cd1c                SPI2_IRQHandler
+                0x0800cd1c                ADC5_IRQHandler
+                0x0800cd1c                DMA2_Channel5_IRQHandler
+                0x0800cd1c                CRS_IRQHandler
+                0x0800cd1c                DMA1_Channel5_IRQHandler
+                0x0800cd1c                USB_LP_IRQHandler
+                0x0800cd1c                EXTI4_IRQHandler
+                0x0800cd1c                RNG_IRQHandler
+                0x0800cd1c                HRTIM1_TIMB_IRQHandler
+                0x0800cd1c                TIM1_TRG_COM_TIM17_IRQHandler
+                0x0800cd1c                FDCAN2_IT1_IRQHandler
+                0x0800cd1c                ADC4_IRQHandler
+                0x0800cd1c                WWDG_IRQHandler
+                0x0800cd1c                I2C4_EV_IRQHandler
+                0x0800cd1c                FDCAN2_IT0_IRQHandler
+                0x0800cd1c                LPUART1_IRQHandler
+                0x0800cd1c                DMA2_Channel6_IRQHandler
+                0x0800cd1c                FDCAN1_IT0_IRQHandler
+                0x0800cd1c                TIM2_IRQHandler
+                0x0800cd1c                COMP7_IRQHandler
+                0x0800cd1c                COMP1_2_3_IRQHandler
+                0x0800cd1c                EXTI1_IRQHandler
+                0x0800cd1c                USART2_IRQHandler
+                0x0800cd1c                COMP4_5_6_IRQHandler
+                0x0800cd1c                TIM20_BRK_IRQHandler
+                0x0800cd1c                I2C2_ER_IRQHandler
+                0x0800cd1c                TIM8_BRK_IRQHandler
+                0x0800cd1c                FLASH_IRQHandler
+                0x0800cd1c                TIM20_CC_IRQHandler
+                0x0800cd1c                USART1_IRQHandler
+                0x0800cd1c                I2C1_ER_IRQHandler
+                0x0800cd1c                FMC_IRQHandler
+                0x0800cd1c                LPTIM1_IRQHandler
+                0x0800cd1c                DMAMUX_OVR_IRQHandler
+                0x0800cd1c                I2C4_ER_IRQHandler
+                0x0800cd1c                USBWakeUp_IRQHandler
+                0x0800cd1c                SAI1_IRQHandler
+                0x0800cd1c                DMA2_Channel3_IRQHandler
+                0x0800cd1c                TIM1_BRK_TIM15_IRQHandler
+ *fill*         0x0800cd1e        0x2 
+ .text.cos      0x0800cd20       0xa8 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_cos.o)
+                0x0800cd20                cos
+ .text.sqrtf    0x0800cdc8       0x3c F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_sqrt.o)
+                0x0800cdc8                sqrtf
+ .text.fmaxf    0x0800ce04       0x3a F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fmax.o)
+                0x0800ce04                fmaxf
+ .text.fminf    0x0800ce3e       0x3a F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fmin.o)
+                0x0800ce3e                fminf
  .text.__fpclassifyf
-                0x0800cb38       0x38 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fpclassify.o)
-                0x0800cb38                __fpclassifyf
+                0x0800ce78       0x38 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fpclassify.o)
+                0x0800ce78                __fpclassifyf
  .text.__ieee754_sqrtf
-                0x0800cb70        0x6 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_sqrt.o)
-                0x0800cb70                __ieee754_sqrtf
- *fill*         0x0800cb76        0x2 
- .text.round    0x0800cb78       0x8c F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_round.o)
-                0x0800cb78                round
- *fill*         0x0800cc04        0x4 
+                0x0800ceb0        0x6 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_sqrt.o)
+                0x0800ceb0                __ieee754_sqrtf
+ *fill*         0x0800ceb6        0x2 
+ .text.round    0x0800ceb8       0x8c F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_round.o)
+                0x0800ceb8                round
+ *fill*         0x0800cf44        0x4 
  .text.__kernel_cos
-                0x0800cc08      0x18c F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_cos.o)
-                0x0800cc08                __kernel_cos
- *fill*         0x0800cd94        0x4 
+                0x0800cf48      0x18c F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_cos.o)
+                0x0800cf48                __kernel_cos
+ *fill*         0x0800d0d4        0x4 
  .text.__kernel_sin
-                0x0800cd98      0x174 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_sin.o)
-                0x0800cd98                __kernel_sin
- *fill*         0x0800cf0c        0x4 
+                0x0800d0d8      0x174 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_sin.o)
+                0x0800d0d8                __kernel_sin
+ *fill*         0x0800d24c        0x4 
  .text.__ieee754_rem_pio2
-                0x0800cf10      0x3f8 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
-                0x0800cf10                __ieee754_rem_pio2
- .text.fabs     0x0800d308       0x10 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_fabs.o)
-                0x0800d308                fabs
+                0x0800d250      0x3f8 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
+                0x0800d250                __ieee754_rem_pio2
+ .text.fabs     0x0800d648       0x10 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_fabs.o)
+                0x0800d648                fabs
  .text.__kernel_rem_pio2
-                0x0800d318      0x6a0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
-                0x0800d318                __kernel_rem_pio2
- .text.scalbn   0x0800d9b8       0xf4 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_scalbn.o)
-                0x0800d9b8                scalbn
- *fill*         0x0800daac        0x4 
- .text.floor    0x0800dab0       0xf8 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_floor.o)
-                0x0800dab0                floor
- .text.memset   0x0800dba8       0x10 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memset.o)
-                0x0800dba8                memset
- .text.__errno  0x0800dbb8        0xc F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
-                0x0800dbb8                __errno
+                0x0800d658      0x6a0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
+                0x0800d658                __kernel_rem_pio2
+ .text.scalbn   0x0800dcf8       0xf4 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_scalbn.o)
+                0x0800dcf8                scalbn
+ *fill*         0x0800ddec        0x4 
+ .text.floor    0x0800ddf0       0xf8 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_floor.o)
+                0x0800ddf0                floor
+ .text.memset   0x0800dee8       0x10 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memset.o)
+                0x0800dee8                memset
+ .text.__errno  0x0800def8        0xc F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
+                0x0800def8                __errno
  .text.__libc_init_array
-                0x0800dbc4       0x48 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-init.o)
-                0x0800dbc4                __libc_init_array
+                0x0800df04       0x48 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-init.o)
+                0x0800df04                __libc_init_array
+ .text.memcpy   0x0800df4c       0x1c F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
+                0x0800df4c                memcpy
  *(.glue_7)
- .glue_7        0x0800dc0c        0x0 linker stubs
+ .glue_7        0x0800df68        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0800dc0c        0x0 linker stubs
+ .glue_7t       0x0800df68        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0800dc0c        0x0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .eh_frame      0x0800df68        0x0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.init)
- .init          0x0800dc0c        0x4 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x0800dc0c                _init
- .init          0x0800dc10        0x8 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
+ .init          0x0800df68        0x4 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x0800df68                _init
+ .init          0x0800df6c        0x8 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
  *(.fini)
- .fini          0x0800dc18        0x4 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x0800dc18                _fini
- .fini          0x0800dc1c        0x8 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
-                0x0800dc24                        . = ALIGN (0x4)
-                0x0800dc24                        _etext = .
+ .fini          0x0800df74        0x4 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x0800df74                _fini
+ .fini          0x0800df78        0x8 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x0800df80                        . = ALIGN (0x4)
+                0x0800df80                        _etext = .
 
-.vfp11_veneer   0x0800dc24        0x0
- .vfp11_veneer  0x0800dc24        0x0 linker stubs
+.vfp11_veneer   0x0800df80        0x0
+ .vfp11_veneer  0x0800df80        0x0 linker stubs
 
-.v4_bx          0x0800dc24        0x0
- .v4_bx         0x0800dc24        0x0 linker stubs
+.v4_bx          0x0800df80        0x0
+ .v4_bx         0x0800df80        0x0 linker stubs
 
-.iplt           0x0800dc24        0x0
- .iplt          0x0800dc24        0x0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.iplt           0x0800df80        0x0
+ .iplt          0x0800df80        0x0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.rodata         0x0800dc28      0xd60
-                0x0800dc28                        . = ALIGN (0x4)
+.rodata         0x0800df80      0xd60
+                0x0800df80                        . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x0800dc28       0x7d CMakeFiles/Three-phase_inverter.dir/Core/Src/MY_OLED.c.obj
+ .rodata        0x0800df80       0x7d CMakeFiles/Three-phase_inverter.dir/Core/Src/MY_OLED.c.obj
  *(.rodata*)
- *fill*         0x0800dca5        0x3 
+ *fill*         0x0800dffd        0x3 
  .rodata.AHBPrescTable
-                0x0800dca8       0x10 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32g4xx.c.obj
-                0x0800dca8                AHBPrescTable
+                0x0800e000       0x10 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32g4xx.c.obj
+                0x0800e000                AHBPrescTable
  .rodata.APBPrescTable
-                0x0800dcb8        0x8 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32g4xx.c.obj
-                0x0800dcb8                APBPrescTable
+                0x0800e010        0x8 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32g4xx.c.obj
+                0x0800e010                APBPrescTable
  .rodata.UARTPrescTable
-                0x0800dcc0       0x18 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
-                0x0800dcc0                UARTPrescTable
+                0x0800e018       0x18 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x0800e018                UARTPrescTable
  .rodata.numerator.1
-                0x0800dcd8        0x8 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+                0x0800e030        0x8 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
  .rodata.denominator.0
-                0x0800dce0        0x8 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+                0x0800e038        0x8 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
  .rodata.OLED_F8x16
-                0x0800dce8      0x5f0 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED_Data.c.obj
-                0x0800dce8                OLED_F8x16
+                0x0800e040      0x5f0 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED_Data.c.obj
+                0x0800e040                OLED_F8x16
  .rodata.OLED_F6x8
-                0x0800e2d8      0x23a CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED_Data.c.obj
-                0x0800e2d8                OLED_F6x8
- *fill*         0x0800e512        0x2 
+                0x0800e630      0x23a CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED_Data.c.obj
+                0x0800e630                OLED_F6x8
+ *fill*         0x0800e86a        0x2 
  .rodata.OLED_CF16x16
-                0x0800e514      0x29a CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED_Data.c.obj
-                0x0800e514                OLED_CF16x16
- *fill*         0x0800e7ae        0x2 
+                0x0800e86c      0x29a CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED_Data.c.obj
+                0x0800e86c                OLED_CF16x16
+ *fill*         0x0800eb06        0x2 
  .rodata.npio2_hw
-                0x0800e7b0       0x80 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
+                0x0800eb08       0x80 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
  .rodata.two_over_pi
-                0x0800e830      0x108 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
- .rodata.PIo2   0x0800e938       0x40 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
+                0x0800eb88      0x108 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
+ .rodata.PIo2   0x0800ec90       0x40 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
  .rodata.init_jk
-                0x0800e978       0x10 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
-                0x0800e988                        . = ALIGN (0x4)
+                0x0800ecd0       0x10 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
+                0x0800ece0                        . = ALIGN (0x4)
 
-.ARM.extab      0x0800e988        0x0
-                0x0800e988                        . = ALIGN (0x4)
+.ARM.extab      0x0800ece0        0x0
+                0x0800ece0                        . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0800e988                        . = ALIGN (0x4)
+                0x0800ece0                        . = ALIGN (0x4)
 
-.ARM            0x0800e988        0x8
-                0x0800e988                        . = ALIGN (0x4)
-                0x0800e988                        __exidx_start = .
+.ARM            0x0800ece0        0x8
+                0x0800ece0                        . = ALIGN (0x4)
+                0x0800ece0                        __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x0800e988        0x8 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
- .ARM.exidx     0x0800e990        0x0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-strcmp.o)
+ .ARM.exidx     0x0800ece0        0x8 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .ARM.exidx     0x0800ece8        0x0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-strcmp.o)
                                   0x8 (size before relaxing)
-                0x0800e990                        __exidx_end = .
-                0x0800e990                        . = ALIGN (0x4)
+                0x0800ece8                        __exidx_end = .
+                0x0800ece8                        . = ALIGN (0x4)
 
-.preinit_array  0x0800e990        0x0
-                0x0800e990                        . = ALIGN (0x4)
-                0x0800e990                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x0800ece8        0x0
+                0x0800ece8                        . = ALIGN (0x4)
+                0x0800ece8                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0800e990                        PROVIDE (__preinit_array_end = .)
-                0x0800e990                        . = ALIGN (0x4)
+                0x0800ece8                        PROVIDE (__preinit_array_end = .)
+                0x0800ece8                        . = ALIGN (0x4)
 
-.init_array     0x0800e990        0x4
-                0x0800e990                        . = ALIGN (0x4)
-                0x0800e990                        PROVIDE (__init_array_start = .)
+.init_array     0x0800ece8        0x4
+                0x0800ece8                        . = ALIGN (0x4)
+                0x0800ece8                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x0800e990        0x4 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x0800e994                        PROVIDE (__init_array_end = .)
-                0x0800e994                        . = ALIGN (0x4)
+ .init_array    0x0800ece8        0x4 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x0800ecec                        PROVIDE (__init_array_end = .)
+                0x0800ecec                        . = ALIGN (0x4)
 
-.fini_array     0x0800e994        0x4
-                0x0800e994                        . = ALIGN (0x4)
+.fini_array     0x0800ecec        0x4
+                0x0800ecec                        . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0800e994        0x4 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .fini_array    0x0800ecec        0x4 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x0800e998                        . = ALIGN (0x4)
-                0x0800e998                        _sidata = LOADADDR (.data)
+                0x0800ecf0                        . = ALIGN (0x4)
+                0x0800ecf0                        _sidata = LOADADDR (.data)
 
-.rel.dyn        0x0800e998        0x0
- .rel.iplt      0x0800e998        0x0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x0800ecf0        0x0
+ .rel.iplt      0x0800ecf0        0x0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.data           0x20000000       0x70 load address 0x0800e998
+.data           0x20000000       0x70 load address 0x0800ecf0
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
  *(.data)
@@ -6786,10 +6775,10 @@ LOAD F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-
  *(.RamFunc*)
                 0x20000070                        . = ALIGN (0x4)
 
-.igot.plt       0x20000070        0x0 load address 0x0800ea08
+.igot.plt       0x20000070        0x0 load address 0x0800ed60
  .igot.plt      0x20000070        0x0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.tdata          0x20000070        0x0 load address 0x0800ea08
+.tdata          0x20000070        0x0 load address 0x0800ed60
  *(.tdata .tdata.* .gnu.linkonce.td.*)
                 0x20000070                        . = ALIGN (0x4)
                 0x20000070                        _edata = .
@@ -6806,7 +6795,7 @@ LOAD F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-
                 [!provide]                        PROVIDE (__data_source_end = __tdata_source_end)
                 [!provide]                        PROVIDE (__data_source_size = (__data_source_end - __data_source))
 
-.tbss           0x20000070        0x0 load address 0x0800ea08
+.tbss           0x20000070        0x0 load address 0x0800ed60
                 0x20000070                        _sbss = .
                 0x20000070                        __bss_start__ = _sbss
  *(.tbss .tbss.*)
@@ -6823,7 +6812,7 @@ LOAD F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-
                 [!provide]                        PROVIDE (__arm32_tls_tcb_offset = MAX (0x8, __tls_align))
                 [!provide]                        PROVIDE (__arm64_tls_tcb_offset = MAX (0x10, __tls_align))
 
-.bss            0x20000070     0x1150 load address 0x0800ea08
+.bss            0x20000070     0x1254 load address 0x0800ed60
  *(.bss)
  .bss           0x20000070       0x1c F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.bss*)
@@ -6884,56 +6873,59 @@ LOAD F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-
                 0x200008c4                vb_setpoint_data
  .bss.den       0x20000be4        0x4 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
                 0x20000be4                den
- .bss.count.1   0x20000be8        0x1 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
- .bss.count1.0  0x20000be9        0x1 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
- *fill*         0x20000bea        0x2 
- .bss.hadc1     0x20000bec       0x6c CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
-                0x20000bec                hadc1
- .bss.hadc2     0x20000c58       0x6c CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
-                0x20000c58                hadc2
+ .bss.vofa_tx_buf
+                0x20000be8      0x104 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+ .bss.count.1   0x20000cec        0x1 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+ .bss.count1.0  0x20000ced        0x1 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+ *fill*         0x20000cee        0x2 
+ .bss.hadc1     0x20000cf0       0x6c CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
+                0x20000cf0                hadc1
+ .bss.hadc2     0x20000d5c       0x6c CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
+                0x20000d5c                hadc2
  .bss.hdma_adc1
-                0x20000cc4       0x60 CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
-                0x20000cc4                hdma_adc1
+                0x20000dc8       0x60 CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
+                0x20000dc8                hdma_adc1
  .bss.hdma_adc2
-                0x20000d24       0x60 CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
-                0x20000d24                hdma_adc2
+                0x20000e28       0x60 CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
+                0x20000e28                hdma_adc2
  .bss.HAL_RCC_ADC12_CLK_ENABLED
-                0x20000d84        0x4 CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
- .bss.hhrtim1   0x20000d88       0xfc CMakeFiles/Three-phase_inverter.dir/Core/Src/hrtim.c.obj
-                0x20000d88                hhrtim1
- .bss.hspi3     0x20000e84       0x64 CMakeFiles/Three-phase_inverter.dir/Core/Src/spi.c.obj
-                0x20000e84                hspi3
+                0x20000e88        0x4 CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
+ .bss.hhrtim1   0x20000e8c       0xfc CMakeFiles/Three-phase_inverter.dir/Core/Src/hrtim.c.obj
+                0x20000e8c                hhrtim1
+ .bss.hspi3     0x20000f88       0x64 CMakeFiles/Three-phase_inverter.dir/Core/Src/spi.c.obj
+                0x20000f88                hspi3
  .bss.hdma_spi3_tx
-                0x20000ee8       0x60 CMakeFiles/Three-phase_inverter.dir/Core/Src/spi.c.obj
-                0x20000ee8                hdma_spi3_tx
- .bss.htim3     0x20000f48       0x4c CMakeFiles/Three-phase_inverter.dir/Core/Src/tim.c.obj
-                0x20000f48                htim3
- .bss.huart4    0x20000f94       0x94 CMakeFiles/Three-phase_inverter.dir/Core/Src/usart.c.obj
-                0x20000f94                huart4
+                0x20000fec       0x60 CMakeFiles/Three-phase_inverter.dir/Core/Src/spi.c.obj
+                0x20000fec                hdma_spi3_tx
+ .bss.htim3     0x2000104c       0x4c CMakeFiles/Three-phase_inverter.dir/Core/Src/tim.c.obj
+                0x2000104c                htim3
+ .bss.huart4    0x20001098       0x94 CMakeFiles/Three-phase_inverter.dir/Core/Src/usart.c.obj
+                0x20001098                huart4
  .bss.hdma_uart4_tx
-                0x20001028       0x60 CMakeFiles/Three-phase_inverter.dir/Core/Src/usart.c.obj
-                0x20001028                hdma_uart4_tx
- .bss.__sf      0x20001088      0x138 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-findfp.o)
-                0x20001088                __sf
+                0x2000112c       0x60 CMakeFiles/Three-phase_inverter.dir/Core/Src/usart.c.obj
+                0x2000112c                hdma_uart4_tx
+ .bss.__sf      0x2000118c      0x138 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-findfp.o)
+                0x2000118c                __sf
  *(COMMON)
-                0x200011c0                        . = ALIGN (0x4)
-                0x200011c0                        _ebss = .
-                0x200011c0                        __bss_end__ = _ebss
+                0x200012c4                        . = ALIGN (0x4)
+                0x200012c4                        _ebss = .
+                0x200012c4                        __bss_end__ = _ebss
                 [!provide]                        PROVIDE (__bss_end = .)
                 [!provide]                        PROVIDE (__non_tls_bss_start = ADDR (.bss))
                 [!provide]                        PROVIDE (__bss_start = __tbss_start)
                 [!provide]                        PROVIDE (__bss_size = (__bss_end - __bss_start))
 
 ._user_heap_stack
-                0x200011c0      0x600 load address 0x0800ea08
-                0x200011c0                        . = ALIGN (0x8)
+                0x200012c4      0x604 load address 0x0800ed60
+                0x200012c8                        . = ALIGN (0x8)
+ *fill*         0x200012c4        0x4 
                 [!provide]                        PROVIDE (end = .)
-                0x200011c0                        PROVIDE (_end = .)
-                0x200013c0                        . = (. + _Min_Heap_Size)
- *fill*         0x200011c0      0x200 
-                0x200017c0                        . = (. + _Min_Stack_Size)
- *fill*         0x200013c0      0x400 
-                0x200017c0                        . = ALIGN (0x8)
+                0x200012c8                        PROVIDE (_end = .)
+                0x200014c8                        . = (. + _Min_Heap_Size)
+ *fill*         0x200012c8      0x200 
+                0x200018c8                        . = (. + _Min_Stack_Size)
+ *fill*         0x200014c8      0x400 
+                0x200018c8                        . = ALIGN (0x8)
 
 /DISCARD/
  libc.a:*(*)
@@ -7067,7 +7059,9 @@ LOAD linker stubs
  .ARM.attributes
                 0x00000b7b       0x20 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-strcmp.o)
  .ARM.attributes
-                0x00000b9b       0x22 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x00000b9b       0x34 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
+ .ARM.attributes
+                0x00000bcf       0x22 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
 
 .comment        0x00000000       0x43
  .comment       0x00000000       0x43 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32g4xx.c.obj
@@ -7105,8 +7099,9 @@ LOAD linker stubs
  .comment       0x00000043       0x44 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-impure.o)
  .comment       0x00000043       0x44 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
  .comment       0x00000043       0x44 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-init.o)
+ .comment       0x00000043       0x44 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
 
-.debug_info     0x00000000    0x26b4b
+.debug_info     0x00000000    0x26c78
  .debug_info    0x00000000      0x58e cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32g4xx.c.obj
  .debug_info    0x0000058e     0x2063 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
  .debug_info    0x000025f1     0x1d80 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj
@@ -7126,25 +7121,26 @@ LOAD linker stubs
  .debug_info    0x0001861b      0x3fb CMakeFiles/Three-phase_inverter.dir/Core/Src/MY_OLED.c.obj
  .debug_info    0x00018a16     0x1731 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
  .debug_info    0x0001a147      0x1fc CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED_Data.c.obj
- .debug_info    0x0001a343     0x279f CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
- .debug_info    0x0001cae2      0x786 CMakeFiles/Three-phase_inverter.dir/Core/Src/gpio.c.obj
- .debug_info    0x0001d268     0x136f CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
- .debug_info    0x0001e5d7      0x5b3 CMakeFiles/Three-phase_inverter.dir/Core/Src/dma.c.obj
- .debug_info    0x0001eb8a     0x1786 CMakeFiles/Three-phase_inverter.dir/Core/Src/hrtim.c.obj
- .debug_info    0x00020310      0xe53 CMakeFiles/Three-phase_inverter.dir/Core/Src/spi.c.obj
- .debug_info    0x00021163      0xe2c CMakeFiles/Three-phase_inverter.dir/Core/Src/tim.c.obj
- .debug_info    0x00021f8f     0x10e8 CMakeFiles/Three-phase_inverter.dir/Core/Src/usart.c.obj
- .debug_info    0x00023077     0x1780 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
- .debug_info    0x000247f7      0x343 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_hal_msp.c.obj
- .debug_info    0x00024b3a       0x30 CMakeFiles/Three-phase_inverter.dir/startup_stm32g474xx.s.obj
- .debug_info    0x00024b6a      0xfb5 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-findfp.o)
- .debug_info    0x00025b1f       0xe0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memset.o)
- .debug_info    0x00025bff      0x715 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-impure.o)
- .debug_info    0x00026314      0x6fb F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
- .debug_info    0x00026a0f      0x10b F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-init.o)
- .debug_info    0x00026b1a       0x31 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-strcmp.o)
+ .debug_info    0x0001a343     0x27ab CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+ .debug_info    0x0001caee      0x786 CMakeFiles/Three-phase_inverter.dir/Core/Src/gpio.c.obj
+ .debug_info    0x0001d274     0x136f CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
+ .debug_info    0x0001e5e3      0x5b3 CMakeFiles/Three-phase_inverter.dir/Core/Src/dma.c.obj
+ .debug_info    0x0001eb96     0x1786 CMakeFiles/Three-phase_inverter.dir/Core/Src/hrtim.c.obj
+ .debug_info    0x0002031c      0xe53 CMakeFiles/Three-phase_inverter.dir/Core/Src/spi.c.obj
+ .debug_info    0x0002116f      0xe2c CMakeFiles/Three-phase_inverter.dir/Core/Src/tim.c.obj
+ .debug_info    0x00021f9b     0x10e8 CMakeFiles/Three-phase_inverter.dir/Core/Src/usart.c.obj
+ .debug_info    0x00023083     0x1780 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+ .debug_info    0x00024803      0x343 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_hal_msp.c.obj
+ .debug_info    0x00024b46       0x30 CMakeFiles/Three-phase_inverter.dir/startup_stm32g474xx.s.obj
+ .debug_info    0x00024b76      0xfb5 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-findfp.o)
+ .debug_info    0x00025b2b       0xe0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memset.o)
+ .debug_info    0x00025c0b      0x715 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-impure.o)
+ .debug_info    0x00026320      0x6fb F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
+ .debug_info    0x00026a1b      0x10b F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-init.o)
+ .debug_info    0x00026b26       0x31 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-strcmp.o)
+ .debug_info    0x00026b57      0x121 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
 
-.debug_abbrev   0x00000000     0x490f
+.debug_abbrev   0x00000000     0x49d0
  .debug_abbrev  0x00000000      0x11a cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32g4xx.c.obj
  .debug_abbrev  0x0000011a      0x2d3 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
  .debug_abbrev  0x000003ed      0x2ee cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj
@@ -7181,8 +7177,9 @@ LOAD linker stubs
  .debug_abbrev  0x000046c0      0x15e F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
  .debug_abbrev  0x0000481e       0xc9 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-init.o)
  .debug_abbrev  0x000048e7       0x28 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-strcmp.o)
+ .debug_abbrev  0x0000490f       0xc1 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
 
-.debug_aranges  0x00000000     0x1f38
+.debug_aranges  0x00000000     0x1f58
  .debug_aranges
                 0x00000000       0x28 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32g4xx.c.obj
  .debug_aranges
@@ -7255,9 +7252,11 @@ LOAD linker stubs
                 0x00001ef8       0x20 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-init.o)
  .debug_aranges
                 0x00001f18       0x20 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-strcmp.o)
+ .debug_aranges
+                0x00001f38       0x20 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
 
 .debug_rnglists
-                0x00000000     0x1845
+                0x00000000     0x1858
  .debug_rnglists
                 0x00000000       0x1a cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32g4xx.c.obj
  .debug_rnglists
@@ -7324,6 +7323,8 @@ LOAD linker stubs
                 0x0000181f       0x13 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
  .debug_rnglists
                 0x00001832       0x13 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-init.o)
+ .debug_rnglists
+                0x00001845       0x13 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
 
 .debug_macro    0x00000000    0x2cd7d
  .debug_macro   0x00000000      0x210 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32g4xx.c.obj
@@ -7429,7 +7430,7 @@ LOAD linker stubs
  .debug_macro   0x0002c935      0x229 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
  .debug_macro   0x0002cb5e      0x21f CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_hal_msp.c.obj
 
-.debug_line     0x00000000    0x24e31
+.debug_line     0x00000000    0x25048
  .debug_line    0x00000000      0x843 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32g4xx.c.obj
  .debug_line    0x00000843     0x22de cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
  .debug_line    0x00002b21     0x1c51 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj
@@ -7449,64 +7450,66 @@ LOAD linker stubs
  .debug_line    0x0001b788      0x886 CMakeFiles/Three-phase_inverter.dir/Core/Src/MY_OLED.c.obj
  .debug_line    0x0001c00e     0x1ac2 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
  .debug_line    0x0001dad0      0x306 CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED_Data.c.obj
- .debug_line    0x0001ddd6     0x1432 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
- .debug_line    0x0001f208      0x815 CMakeFiles/Three-phase_inverter.dir/Core/Src/gpio.c.obj
- .debug_line    0x0001fa1d      0xa46 CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
- .debug_line    0x00020463      0x7d9 CMakeFiles/Three-phase_inverter.dir/Core/Src/dma.c.obj
- .debug_line    0x00020c3c      0xa3a CMakeFiles/Three-phase_inverter.dir/Core/Src/hrtim.c.obj
- .debug_line    0x00021676      0x891 CMakeFiles/Three-phase_inverter.dir/Core/Src/spi.c.obj
- .debug_line    0x00021f07      0x8a6 CMakeFiles/Three-phase_inverter.dir/Core/Src/tim.c.obj
- .debug_line    0x000227ad      0x8b8 CMakeFiles/Three-phase_inverter.dir/Core/Src/usart.c.obj
- .debug_line    0x00023065      0x991 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
- .debug_line    0x000239f6      0x7da CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_hal_msp.c.obj
- .debug_line    0x000241d0       0x7b CMakeFiles/Three-phase_inverter.dir/startup_stm32g474xx.s.obj
- .debug_line    0x0002424b      0x5c0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-findfp.o)
- .debug_line    0x0002480b      0x17e F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memset.o)
- .debug_line    0x00024989      0x163 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-impure.o)
- .debug_line    0x00024aec      0x185 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
- .debug_line    0x00024c71      0x170 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-init.o)
- .debug_line    0x00024de1       0x50 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-strcmp.o)
+ .debug_line    0x0001ddd6     0x1447 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+ .debug_line    0x0001f21d      0x815 CMakeFiles/Three-phase_inverter.dir/Core/Src/gpio.c.obj
+ .debug_line    0x0001fa32      0xa46 CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
+ .debug_line    0x00020478      0x7d9 CMakeFiles/Three-phase_inverter.dir/Core/Src/dma.c.obj
+ .debug_line    0x00020c51      0xa3a CMakeFiles/Three-phase_inverter.dir/Core/Src/hrtim.c.obj
+ .debug_line    0x0002168b      0x891 CMakeFiles/Three-phase_inverter.dir/Core/Src/spi.c.obj
+ .debug_line    0x00021f1c      0x8a6 CMakeFiles/Three-phase_inverter.dir/Core/Src/tim.c.obj
+ .debug_line    0x000227c2      0x8b8 CMakeFiles/Three-phase_inverter.dir/Core/Src/usart.c.obj
+ .debug_line    0x0002307a      0x991 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+ .debug_line    0x00023a0b      0x7da CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_hal_msp.c.obj
+ .debug_line    0x000241e5       0x7b CMakeFiles/Three-phase_inverter.dir/startup_stm32g474xx.s.obj
+ .debug_line    0x00024260      0x5c0 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-findfp.o)
+ .debug_line    0x00024820      0x17e F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memset.o)
+ .debug_line    0x0002499e      0x163 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-impure.o)
+ .debug_line    0x00024b01      0x185 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
+ .debug_line    0x00024c86      0x170 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-init.o)
+ .debug_line    0x00024df6       0x50 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-strcmp.o)
+ .debug_line    0x00024e46      0x202 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
 
-.debug_str      0x00000000   0x1373ad
- .debug_str     0x00000000   0x1373ad cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32g4xx.c.obj
+.debug_str      0x00000000   0x137425
+ .debug_str     0x00000000   0x137425 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32g4xx.c.obj
                              0x128215 (size before relaxing)
- .debug_str     0x001373ad   0x129242 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
- .debug_str     0x001373ad   0x1291e8 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj
- .debug_str     0x001373ad   0x128f27 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
- .debug_str     0x001373ad   0x128934 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
- .debug_str     0x001373ad   0x12895e cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c.obj
- .debug_str     0x001373ad   0x1283a0 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
- .debug_str     0x001373ad   0x1285ef cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma.c.obj
- .debug_str     0x001373ad   0x128703 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c.obj
- .debug_str     0x001373ad   0x128be3 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
- .debug_str     0x001373ad   0x12a60f cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_hrtim.c.obj
- .debug_str     0x001373ad   0x128b47 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi.c.obj
- .debug_str     0x001373ad   0x129713 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
- .debug_str     0x001373ad   0x129387 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
- .debug_str     0x001373ad   0x1291d0 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
- .debug_str     0x001373ad   0x1289ce cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
- .debug_str     0x001373ad   0x128478 CMakeFiles/Three-phase_inverter.dir/Core/Src/MY_OLED.c.obj
- .debug_str     0x001373ad   0x12c82c CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
- .debug_str     0x001373ad     0x3dfc CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED_Data.c.obj
- .debug_str     0x001373ad   0x12e34d CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
- .debug_str     0x001373ad   0x128b04 CMakeFiles/Three-phase_inverter.dir/Core/Src/gpio.c.obj
- .debug_str     0x001373ad   0x1293df CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
- .debug_str     0x001373ad   0x128a36 CMakeFiles/Three-phase_inverter.dir/Core/Src/dma.c.obj
- .debug_str     0x001373ad   0x1296ca CMakeFiles/Three-phase_inverter.dir/Core/Src/hrtim.c.obj
- .debug_str     0x001373ad   0x129076 CMakeFiles/Three-phase_inverter.dir/Core/Src/spi.c.obj
- .debug_str     0x001373ad   0x128cc2 CMakeFiles/Three-phase_inverter.dir/Core/Src/tim.c.obj
- .debug_str     0x001373ad   0x12932b CMakeFiles/Three-phase_inverter.dir/Core/Src/usart.c.obj
- .debug_str     0x001373ad   0x1292d8 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
- .debug_str     0x001373ad   0x1284a0 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_hal_msp.c.obj
- .debug_str     0x001373ad       0x8c CMakeFiles/Three-phase_inverter.dir/startup_stm32g474xx.s.obj
- .debug_str     0x001373ad      0x7b4 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-findfp.o)
- .debug_str     0x001373ad      0x211 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memset.o)
- .debug_str     0x001373ad      0x531 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-impure.o)
- .debug_str     0x001373ad      0x52b F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
- .debug_str     0x001373ad      0x272 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-init.o)
- .debug_str     0x001373ad       0xf2 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-strcmp.o)
+ .debug_str     0x00137425   0x129242 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
+ .debug_str     0x00137425   0x1291e8 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj
+ .debug_str     0x00137425   0x128f27 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
+ .debug_str     0x00137425   0x128934 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj
+ .debug_str     0x00137425   0x12895e cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c.obj
+ .debug_str     0x00137425   0x1283a0 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj
+ .debug_str     0x00137425   0x1285ef cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma.c.obj
+ .debug_str     0x00137425   0x128703 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c.obj
+ .debug_str     0x00137425   0x128be3 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj
+ .debug_str     0x00137425   0x12a60f cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_hrtim.c.obj
+ .debug_str     0x00137425   0x128b47 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi.c.obj
+ .debug_str     0x00137425   0x129713 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj
+ .debug_str     0x00137425   0x129387 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
+ .debug_str     0x00137425   0x1291d0 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+ .debug_str     0x00137425   0x1289ce cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+ .debug_str     0x00137425   0x128478 CMakeFiles/Three-phase_inverter.dir/Core/Src/MY_OLED.c.obj
+ .debug_str     0x00137425   0x12c82c CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED.c.obj
+ .debug_str     0x00137425     0x3dfc CMakeFiles/Three-phase_inverter.dir/Core/Src/OLED_Data.c.obj
+ .debug_str     0x00137425   0x12e354 CMakeFiles/Three-phase_inverter.dir/Core/Src/main.c.obj
+ .debug_str     0x00137425   0x128b04 CMakeFiles/Three-phase_inverter.dir/Core/Src/gpio.c.obj
+ .debug_str     0x00137425   0x1293df CMakeFiles/Three-phase_inverter.dir/Core/Src/adc.c.obj
+ .debug_str     0x00137425   0x128a36 CMakeFiles/Three-phase_inverter.dir/Core/Src/dma.c.obj
+ .debug_str     0x00137425   0x1296ca CMakeFiles/Three-phase_inverter.dir/Core/Src/hrtim.c.obj
+ .debug_str     0x00137425   0x129076 CMakeFiles/Three-phase_inverter.dir/Core/Src/spi.c.obj
+ .debug_str     0x00137425   0x128cc2 CMakeFiles/Three-phase_inverter.dir/Core/Src/tim.c.obj
+ .debug_str     0x00137425   0x12932b CMakeFiles/Three-phase_inverter.dir/Core/Src/usart.c.obj
+ .debug_str     0x00137425   0x1292d8 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_it.c.obj
+ .debug_str     0x00137425   0x1284a0 CMakeFiles/Three-phase_inverter.dir/Core/Src/stm32g4xx_hal_msp.c.obj
+ .debug_str     0x00137425       0x8c CMakeFiles/Three-phase_inverter.dir/startup_stm32g474xx.s.obj
+ .debug_str     0x00137425      0x7b4 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-findfp.o)
+ .debug_str     0x00137425      0x211 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memset.o)
+ .debug_str     0x00137425      0x531 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-impure.o)
+ .debug_str     0x00137425      0x52b F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
+ .debug_str     0x00137425      0x272 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-init.o)
+ .debug_str     0x00137425       0xf2 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-strcmp.o)
+ .debug_str     0x00137425      0x22f F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
 
-.debug_frame    0x00000000     0x897c
+.debug_frame    0x00000000     0x89a4
  .debug_frame   0x00000000       0x58 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32g4xx.c.obj
  .debug_frame   0x00000058      0xacc cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj
  .debug_frame   0x00000b24      0x81c cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj
@@ -7562,6 +7565,7 @@ LOAD linker stubs
  .debug_frame   0x00008910       0x20 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
  .debug_frame   0x00008930       0x2c F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-init.o)
  .debug_frame   0x0000895c       0x20 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-strcmp.o)
+ .debug_frame   0x0000897c       0x28 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
 
 .debug_line_str
                 0x00000000      0x14d
@@ -7572,10 +7576,12 @@ LOAD linker stubs
                 0x0000014d       0xdd F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-strcmp.o)
 
 .debug_loclists
-                0x00000000      0x33d
+                0x00000000      0x3ea
  .debug_loclists
                 0x00000000      0x2ac F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-findfp.o)
  .debug_loclists
                 0x000002ac       0x4d F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memset.o)
  .debug_loclists
                 0x000002f9       0x44 F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-init.o)
+ .debug_loclists
+                0x0000033d       0xad F:/STM32CubeCLT/STM32CubeCLT_1.18.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy-stub.o)
